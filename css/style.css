@@ -8363,13 +8363,16 @@ h1, h2, h3, h4, h5,
   position: relative; }
 
 .hero-wrap {
-  width: 100%;
-  height: 600px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top center !important;
-  position: relative;
-  z-index: 0; }
+    width: 100%;
+    height: 600px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center !important;
+    position: relative;
+    margin-top: -16px;
+    margin-bottom: 70px;
+    z-index: 0;
+}
   .hero-wrap .overlay {
     width: 100%;
     height: 600px;
