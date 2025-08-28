@@ -166,7 +166,10 @@ figure {
 
 img {
   vertical-align: middle;
-  border-style: none; }
+  border-style: none; 
+  max-height : 50px;
+  padding-bottom : 5px;
+}
 
 svg {
   overflow: hidden;
@@ -8360,7 +8363,8 @@ h1, h2, h3, h4, h5,
 .navbar-brand {
   font-weight: 700;
   font-size: 20px;
-  position: relative; }
+  position: relative; 
+}
 
 .hero-wrap {
     width: 100%;
@@ -9084,7 +9088,8 @@ textarea.form-control {
   .ftco-footer .ftco-heading-2 {
     font-size: 17px;
     font-weight: 400;
-    color: #000000; }
+    color: #000000;
+  }
 
 .ftco-footer-social li {
   list-style: none;

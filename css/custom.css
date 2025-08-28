@@ -65,3 +65,15 @@ a {
         .ftco-intro .col-md-3:nth-child(4) {
             animation-delay: 0.7s;
         }
+
+.ftco-footer .logo {
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: -10px; 
+    margin-left : -10px;
+}
+
+    .ftco-footer .logo img {
+        height: 50px; 
+    }
