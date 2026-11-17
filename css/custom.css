@@ -1,3 +1,29 @@
+﻿/* ── Baseline Mobile Responsiveness & Overflow Protection ─────────── */
+html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box !important;
+}
+
+img, svg, canvas {
+    max-width: 100% !important;
+    height: auto;
+}
+
+.container, .container-fluid {
+    width: 100% !important;
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+}
+
 /* Site-specific styles */
 .hero-wrap {
     opacity: 0;
@@ -1397,6 +1423,53 @@ body {
    Guarantees zero overflow, perfect typography scaling & adaptive padding
    ========================================================================== */
 
+/* ── Navbar Toggler — MOBILE ONLY (hidden on desktop via Bootstrap navbar-expand-lg) ── */
+/* NOTE: No display property here — Bootstrap handles show/hide via media query */
+@media (max-width: 991.98px) {
+    .navbar-toggler {
+        border: 1px solid rgba(203, 184, 140, 0.45) !important;
+        background: rgba(203, 184, 140, 0.1) !important;
+        color: #dfceaa !important;
+        padding: 8px 16px !important;
+        border-radius: 8px !important;
+        font-size: 0.92rem !important;
+        letter-spacing: 1px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+        outline: none !important;
+    }
+
+    .navbar-toggler .fa-bars {
+        font-size: 1.15rem;
+        color: #dfceaa;
+    }
+
+    .navbar-toggler .nav-menu-text {
+        font-size: 0.88rem;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .navbar-toggler:hover,
+    .navbar-toggler:focus {
+        background: rgba(203, 184, 140, 0.22) !important;
+        border-color: #dfceaa !important;
+        color: #ffffff !important;
+        box-shadow: 0 0 15px rgba(203, 184, 140, 0.45) !important;
+        outline: none !important;
+    }
+}
+
+/* Force hidden on desktop — belt-and-suspenders override */
+@media (min-width: 992px) {
+    .navbar-toggler {
+        display: none !important;
+    }
+}
+
 /* ── Tablets & Below (max-width: 991.98px) ── */
 @media (max-width: 991.98px) {
     /* Navbar Mobile Dropdown Glass Styling */
@@ -1404,26 +1477,36 @@ body {
         background: rgba(8, 11, 16, 0.98) !important;
         backdrop-filter: blur(20px) !important;
         -webkit-backdrop-filter: blur(20px) !important;
-        border: 1px solid rgba(203, 184, 140, 0.2) !important;
+        border: 1px solid rgba(203, 184, 140, 0.25) !important;
         border-radius: 16px !important;
         margin-top: 15px !important;
-        padding: 1.5rem !important;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8) !important;
+        padding: 1.2rem 1.4rem !important;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.85), 0 0 25px rgba(203, 184, 140, 0.1) !important;
+    }
+
+    .ftco_navbar .navbar-nav {
+        width: 100% !important;
+    }
+
+    .ftco_navbar .navbar-nav > .nav-item {
+        margin-bottom: 6px;
     }
 
     .ftco_navbar .navbar-nav > .nav-item > .nav-link {
-        padding: 10px 14px !important;
-        border-radius: 8px;
-    }
-
-    .ftco_navbar .navbar-nav > .nav-item > .nav-link::after {
-        display: none !important;
+        padding: 12px 16px !important;
+        border-radius: 8px !important;
+        color: rgba(255, 255, 255, 0.85) !important;
+        font-size: 1rem !important;
+        display: block !important;
+        transition: all 0.25s ease !important;
     }
 
     .ftco_navbar .navbar-nav > .nav-item.active > .nav-link,
     .ftco_navbar .navbar-nav > .nav-item > .nav-link:hover {
-        background: rgba(203, 184, 140, 0.08) !important;
+        background: rgba(203, 184, 140, 0.12) !important;
         color: #dfceaa !important;
+        border-left: 3px solid #dfceaa;
+        padding-left: 20px !important;
     }
 
     /* Section padding scale down */
@@ -1457,7 +1540,8 @@ body {
 @media (max-width: 767.98px) {
     /* Top Header Wrap Bar */
     .wrap {
-        padding: 8px 0 !important;
+        padding: 10px 0 !important;
+        overflow: visible !important;
     }
 
     .wrap .row {
@@ -1473,8 +1557,10 @@ body {
     }
 
     .wrap .phone a {
-        font-size: 0.8rem !important;
-        padding: 5px 12px !important;
+        font-size: 0.78rem !important;
+        padding: 6px 12px !important;
+        max-width: 100%;
+        justify-content: center;
     }
 
     .wrap .social-media {
@@ -1484,59 +1570,175 @@ body {
 
     .wrap .social-media p {
         justify-content: center !important;
+        gap: 6px !important;
     }
 
-    /* Hero Headline Scaled for Mobile */
+    /* Hero Section Responsive Scaling */
+    .hero-wrap {
+        height: auto !important;
+        min-height: calc(100vh - 80px) !important;
+        padding: 100px 0 60px 0 !important;
+        margin-bottom: 0 !important;
+        background-attachment: scroll !important;
+    }
+
+    .hero-wrap .slider-text {
+        height: auto !important;
+        min-height: auto !important;
+        padding: 30px 0 !important;
+    }
+
+    .hero-wrap .overlay {
+        height: 100% !important;
+    }
+
     .hero-wrap h1 {
-        font-size: clamp(1.8rem, 7vw, 2.6rem) !important;
+        font-size: clamp(1.85rem, 7vw, 2.4rem) !important;
         line-height: 1.25 !important;
+        margin-bottom: 1rem !important;
     }
 
     .hero-wrap p {
-        font-size: 1rem !important;
-        padding-left: 14px !important;
+        font-size: 0.95rem !important;
+        padding-left: 12px !important;
+    }
+
+    .hero-wrap.hero-wrap-2 {
+        height: auto !important;
+        min-height: 260px !important;
+        padding: 60px 0 !important;
+    }
+
+    .hero-wrap.hero-wrap-2 .slider-text {
+        height: auto !important;
+        min-height: auto !important;
     }
 
     /* Goal Section Cards */
     .goal-header-title {
-        font-size: 1.9rem !important;
+        font-size: 1.8rem !important;
     }
 
     .goal-glass-card {
-        padding: 2.2rem 1.6rem !important;
+        padding: 2rem 1.4rem !important;
         margin-bottom: 20px;
     }
 
     .goal-watermark-number {
-        font-size: 3rem !important;
+        font-size: 2.6rem !important;
         top: 0.8rem;
         right: 1.2rem;
     }
 
     .goal-holo-container {
-        width: 68px;
-        height: 68px;
-        margin-bottom: 1.6rem;
+        width: 62px;
+        height: 62px;
+        margin-bottom: 1.4rem;
     }
 
     .goal-holo-icon {
-        width: 68px;
-        height: 68px;
-        font-size: 1.8rem;
+        width: 62px;
+        height: 62px;
+        font-size: 1.6rem;
+    }
+
+    /* The Vault / Intake Terminal on Mobile */
+    .cyber-terminal-card {
+        border-radius: 18px !important;
+    }
+
+    .terminal-os-bar {
+        padding: 10px 14px !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+    }
+
+    .terminal-title-text {
+        font-size: 0.68rem !important;
+        letter-spacing: 1px !important;
+    }
+
+    .terminal-security-badge {
+        font-size: 0.65rem !important;
+        padding: 2px 6px !important;
+    }
+
+    .terminal-wizard-tabs {
+        display: flex !important;
+        flex-direction: row !important;
+    }
+
+    .wizard-step-node {
+        padding: 10px 6px !important;
+        font-size: 0.72rem !important;
+        letter-spacing: 0.5px !important;
+        gap: 5px !important;
+    }
+
+    .wizard-step-node .step-txt {
+        display: none !important;
+    }
+
+    .wizard-step-node.active .step-txt {
+        display: inline-block !important;
+        font-size: 0.68rem !important;
+    }
+
+    .terminal-step-content {
+        padding: 1.4rem 1rem !important;
+    }
+
+    .category-chip-grid {
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
+    }
+
+    .category-chip-item .chip-inner {
+        padding: 10px 14px !important;
+        font-size: 0.86rem !important;
+    }
+
+    .urgency-buttons-cluster {
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+
+    .urgency-btn {
+        width: 100% !important;
+        min-width: 100% !important;
+        padding: 10px !important;
+        font-size: 0.8rem !important;
+    }
+
+    .terminal-next-btn,
+    .terminal-submit-btn {
+        width: 100% !important;
+        font-size: 0.85rem !important;
+        padding: 12px 16px !important;
+        justify-content: center !important;
+    }
+
+    /* Executive Counsel Card (Contact Page) */
+    .executive-counsel-card {
+        padding: 1.6rem 1.2rem !important;
+    }
+
+    .cyber-terminal-card .p-4.p-md-5 {
+        padding: 1.6rem 1.2rem !important;
     }
 
     /* Intro & Service Cards */
     .ftco-intro .intro {
         margin: 6px 0 !important;
-        padding: 25px 20px !important;
+        padding: 22px 18px !important;
     }
 
     .services-2 {
-        padding: 2.2rem 1.5rem !important;
+        padding: 2rem 1.4rem !important;
     }
 
     .appointment-wrap {
-        padding: 2rem 1.4rem !important;
+        padding: 1.8rem 1.2rem !important;
     }
 
     /* Footer Bottom Strip Signature */
@@ -1548,6 +1750,11 @@ body {
 
     .footer-signature-glow {
         width: 120px;
+    }
+
+    .footer-quick-links li a {
+        max-width: 100% !important;
+        width: 100% !important;
     }
 }
 
@@ -3369,3 +3576,504 @@ body {
 
 
 
+
+/* ============================================================
+   CUSTOM OVERRIDES — appended by css-fixer
+   ============================================================ */
+
+/* ── Fix navbar z-index to always be on top ── */
+.ftco-navbar-light,
+nav.ftco_navbar {
+    z-index: 1000 !important;
+    position: relative !important;
+}
+
+/* ── Fix mobile menu scroll freeze (override style.css) ── */
+body.menu-show {
+    overflow: auto !important;
+    position: relative !important;
+    height: auto !important;
+    width: 100% !important;
+}
+
+/* Mobile nav collapse should scroll independently if too tall */
+@media (max-width: 991.98px) {
+    #ftco-nav.show,
+    #ftco-nav[style*="block"] {
+        max-height: calc(100vh - 120px) !important;
+        overflow-y: auto !important;
+    }
+}
+
+/* ── Subpage Hero — Full Impact Height Fix ── */
+.hero-wrap.hero-wrap-2 {
+    min-height: 45vh !important;
+    height: auto !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.hero-wrap.hero-wrap-2 .slider-text {
+    padding: 80px 0 60px !important;
+    min-height: 45vh !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    width: 100% !important;
+}
+
+@media (max-width: 767px) {
+    .hero-wrap.hero-wrap-2 {
+        min-height: 35vh !important;
+    }
+    .hero-wrap.hero-wrap-2 .slider-text {
+        min-height: 35vh !important;
+        padding: 100px 0 40px !important;
+    }
+}
+
+/* ── Override white bg-light areas in blog-single ── */
+.p-5.bg-light,
+.about-author.bg-light,
+.bg-light {
+    background: rgba(12, 16, 24, 0.85) !important;
+    border: 1px solid rgba(203, 184, 140, 0.15) !important;
+    color: rgba(255,255,255,0.85) !important;
+}
+.bg-light h4, .bg-light p, .bg-light h3 {
+    color: rgba(255,255,255,0.9) !important;
+}
+
+/* Blog comment form dark style */
+form.bg-light,
+.contact-form.bg-light {
+    background: rgba(8, 11, 18, 0.95) !important;
+    border: 1px solid rgba(203,184,140,0.2) !important;
+    border-radius: 16px !important;
+}
+
+/* ── Page layout — ensure sections fill viewport ── */
+.ftco-section {
+    min-height: auto;
+}
+
+/* Ensure the page body always fills the screen */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Footer always at bottom */
+footer.ftco-footer {
+    margin-top: auto;
+}
+
+/* ── Contact dbox dark card fix ── */
+.cyber-contact-universe .dbox {
+    background: rgba(12, 16, 26, 0.9) !important;
+    border: 1px solid rgba(203, 184, 140, 0.2) !important;
+    border-radius: 16px !important;
+    padding: 2rem 1.5rem !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(10px) !important;
+}
+.cyber-contact-universe .dbox:hover {
+    border-color: rgba(203, 184, 140, 0.5) !important;
+    transform: translateY(-5px) !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(203,184,140,0.1) !important;
+}
+.cyber-contact-universe .dbox .icon {
+    background: rgba(203,184,140,0.1) !important;
+    border: 1px solid rgba(203,184,140,0.3) !important;
+    border-radius: 50% !important;
+    width: 60px !important;
+    height: 60px !important;
+    margin: 0 auto 1rem !important;
+    color: #dfceaa !important;
+    font-size: 1.4rem !important;
+}
+.cyber-contact-universe .dbox .text p {
+    color: rgba(255,255,255,0.8) !important;
+    margin: 0 !important;
+}
+.cyber-contact-universe .dbox .text p span {
+    display: block !important;
+    color: #dfceaa !important;
+    font-weight: 700 !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    margin-bottom: 4px !important;
+}
+.cyber-contact-universe .dbox .text a {
+    color: rgba(255,255,255,0.85) !important;
+}
+.cyber-contact-universe .dbox .text a:hover {
+    color: #dfceaa !important;
+}
+
+/* ── Global form dark theme fix ── */
+input.form-control,
+textarea.form-control,
+select.form-control {
+    background: rgba(255,255,255,0.05) !important;
+    border: 1px solid rgba(203,184,140,0.2) !important;
+    color: #fff !important;
+    border-radius: 8px !important;
+    padding: 14px 18px !important;
+    transition: all 0.3s ease !important;
+}
+input.form-control::placeholder,
+textarea.form-control::placeholder {
+    color: rgba(255,255,255,0.35) !important;
+}
+input.form-control:focus,
+textarea.form-control:focus,
+select.form-control:focus {
+    background: rgba(255,255,255,0.08) !important;
+    border-color: rgba(203,184,140,0.6) !important;
+    box-shadow: 0 0 0 3px rgba(203,184,140,0.1) !important;
+    color: #fff !important;
+    outline: none !important;
+}
+
+/* ── Wrap bar responsive fix ── */
+@media (max-width: 575px) {
+    .wrap .wrap-status-badge {
+        display: none !important;
+    }
+    .wrap .phone a {
+        font-size: 0.75rem !important;
+    }
+    .wrap .social-media p a {
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 0.75rem !important;
+    }
+}
+
+/* == about-why-panel: dark luxury replacement for bg-light on About page == */
+.about-why-panel {
+    background: rgba(8, 11, 18, 0.95) !important;
+    border: 1px solid rgba(203, 184, 140, 0.18) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+}
+.about-why-panel .heading-section h2 {
+    color: #fff !important;
+}
+.about-why-panel .heading-section p {
+    color: rgba(255,255,255,0.7) !important;
+}
+.about-why-panel .services .icon {
+    background: rgba(203,184,140,0.1) !important;
+    border: 1px solid rgba(203,184,140,0.3) !important;
+    border-radius: 50% !important;
+    color: #dfceaa !important;
+    min-width: 50px !important;
+    min-height: 50px !important;
+    font-size: 1.3rem !important;
+}
+.about-why-panel .services h2 {
+    font-size: 1.1rem !important;
+    color: #fff !important;
+    margin-bottom: 4px !important;
+}
+.about-why-panel .services p {
+    font-size: 0.88rem !important;
+    color: rgba(255,255,255,0.65) !important;
+    margin: 0 !important;
+}
+
+/* == Fix vimeo play button overlay on about page == */
+.play-video.popup-vimeo {
+    background: rgba(203,184,140,0.15) !important;
+    border: 2px solid rgba(203,184,140,0.5) !important;
+    border-radius: 50% !important;
+    width: 72px !important;
+    height: 72px !important;
+    color: #dfceaa !important;
+    font-size: 1.2rem !important;
+    transition: all 0.3s ease !important;
+}
+.play-video.popup-vimeo:hover {
+    background: rgba(203,184,140,0.3) !important;
+    transform: scale(1.1) !important;
+}
+
+/* == Global: ensure all headings inside dark sections are white == */
+.ftco-section h2,
+.ftco-section h3,
+.ftco-section h4,
+.ftco-section .subheading {
+    color: rgba(255,255,255,0.9) !important;
+}
+.ftco-section p {
+    color: rgba(255,255,255,0.65) !important;
+}
+/* Exceptions: preserve gold subheading accent */
+.ftco-section .subheading {
+    color: #cbb88c !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 3px !important;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+}
+
+/* =========================================================
+   LUXURY DARK & GOLD SCROLLBAR ARCHITECTURE
+   ========================================================= */
+
+:root {
+    color-scheme: dark !important;
+}
+
+/* Page scrollbar for Firefox */
+html, body {
+    scrollbar-width: thin !important;
+    scrollbar-color: #cbb88c #05070a !important;
+}
+
+/* Page scrollbar for WebKit / Chromium / Edge / Safari */
+::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+}
+
+::-webkit-scrollbar-track {
+    background: #05070a !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(203, 184, 140, 0.45) !important;
+    border-radius: 4px !important;
+    border: 1px solid rgba(5, 7, 10, 0.8) !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(223, 206, 170, 0.85) !important;
+}
+
+/* NEVER display default white Windows arrows or buttons */
+::-webkit-scrollbar-button {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent !important;
+}
+
+/* Mobile nav dropdown — Completely hide scrollbar inside glass card, retain smooth touch scrolling */
+@media (max-width: 991.98px) {
+    #ftco-nav,
+    .navbar-collapse {
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    #ftco-nav::-webkit-scrollbar,
+    .navbar-collapse::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+}
+
+/* =========================================================
+   DESIGN REVISIONS — Global polish pass
+   ========================================================= */
+
+/* Ensure wrap bar never pushes content below navbar */
+.wrap {
+    position: relative;
+    z-index: 999 !important;
+}
+
+/* Nav brand logo sizing fix */
+.navbar-brand img {
+    max-height: 42px !important;
+    width: auto !important;
+    margin-right: 10px !important;
+}
+
+/* Nav links — cleaner gold underline on active */
+.ftco-navbar-light .navbar-nav > .nav-item.active > .nav-link::after {
+    width: 100% !important;
+    opacity: 1 !important;
+}
+
+/* Hero text legibility boost */
+.hero-wrap .slider-text h1 {
+    text-shadow: 0 4px 30px rgba(0,0,0,0.9) !important;
+}
+
+/* Section headings — remove stray white override for non-dark sections */
+.hero-wrap h1,
+.hero-wrap .breadcrumbs,
+.hero-wrap p {
+    color: #fff !important;
+}
+
+/* Blog entry card dark override */
+.blog-entry {
+    background: rgba(10, 14, 22, 0.9) !important;
+    border: 1px solid rgba(203, 184, 140, 0.15) !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease !important;
+}
+.blog-entry:hover {
+    transform: translateY(-6px) !important;
+    border-color: rgba(203, 184, 140, 0.4) !important;
+}
+.blog-entry .text {
+    background: transparent !important;
+}
+.blog-entry .text h3.heading a {
+    color: #fff !important;
+}
+.blog-entry .text h3.heading a:hover {
+    color: #dfceaa !important;
+}
+.blog-entry .meta .day {
+    color: #dfceaa !important;
+}
+
+/* block-18 counter card dark fix */
+.block-18 {
+    background: rgba(10, 14, 22, 0.85) !important;
+    border: 1px solid rgba(203, 184, 140, 0.15) !important;
+    border-radius: 12px !important;
+}
+.block-18 .text strong.number,
+.block-18 .text span {
+    color: #fff !important;
+}
+.block-18 .text strong.number {
+    color: #dfceaa !important;
+    font-size: 2.5rem !important;
+}
+
+/* dbox on contact page — ensure icon color correct */
+.dbox .icon span {
+    color: #dfceaa !important;
+}
+
+/* Footer link hover fix */
+.ftco-footer .ftco-footer-widget ul li a:hover {
+    color: #dfceaa !important;
+    padding-left: 4px !important;
+}
+
+/* Remove any residual white card backgrounds */
+.card,
+.block-23,
+.about-wrap,
+.contact-wrap {
+    background: transparent !important;
+}
+
+
+/* ── Ironclad Desktop Toggler Elimination (Cannot show on desktop under ANY circumstance) ── */
+@media (min-width: 992px) {
+    .navbar-toggler,
+    button.navbar-toggler,
+    .navbar-dark .navbar-toggler,
+    .ftco_navbar .navbar-toggler,
+    .ftco-navbar-light .navbar-toggler {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+    }
+}
+
+/* ── Scrolled Navbar Link Color Preservation ── */
+.ftco-navbar-light.scrolled .nav-link,
+.ftco-navbar-light.scrolled .navbar-nav > .nav-item > .nav-link {
+    color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.ftco-navbar-light.scrolled .nav-link:hover,
+.ftco-navbar-light.scrolled .navbar-nav > .nav-item > .nav-link:hover {
+    color: #dfceaa !important;
+}
+
+.ftco-navbar-light.scrolled .nav-item.active > .nav-link,
+.ftco-navbar-light.scrolled .nav-link.active {
+    color: #dfceaa !important;
+}
+
+/* ── Pagination (.block-27) Cyber-Luxury Styling ── */
+.block-27 ul li a,
+.block-27 ul li span {
+    background: rgba(10, 14, 22, 0.85) !important;
+    border: 1px solid rgba(203, 184, 140, 0.25) !important;
+    color: #dfceaa !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+    transition: all 0.3s ease !important;
+}
+
+.block-27 ul li a:hover {
+    background: rgba(203, 184, 140, 0.2) !important;
+    border-color: #dfceaa !important;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(203, 184, 140, 0.3) !important;
+}
+
+.block-27 ul li.active a,
+.block-27 ul li.active span {
+    background: linear-gradient(135deg, #cbb88c 0%, #dfceaa 100%) !important;
+    color: #05070a !important;
+    font-weight: 700 !important;
+    border-color: #dfceaa !important;
+    box-shadow: 0 0 20px rgba(203, 184, 140, 0.45) !important;
+}
+
+/* ── Staff / Attorney Cards Dark Luxury Polish ── */
+.staff {
+    background: rgba(10, 14, 22, 0.9) !important;
+    border: 1px solid rgba(203, 184, 140, 0.2) !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+    transition: transform 0.35s ease, border-color 0.35s ease !important;
+}
+
+.staff:hover {
+    transform: translateY(-6px) !important;
+    border-color: rgba(203, 184, 140, 0.5) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(203, 184, 140, 0.15) !important;
+}
+
+.staff .text h3 a,
+.staff .text h3 {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+.staff .text span.position {
+    color: #cbb88c !important;
+    text-transform: uppercase !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 2px !important;
+}
+
+.staff .text p {
+    color: rgba(255, 255, 255, 0.65) !important;
+}
+
+/* ── Subpages Full-Width Content Alignment ── */
+.hero-wrap.hero-wrap-2 .container,
+.ftco-section > .container {
+    max-width: 1200px !important;
+}

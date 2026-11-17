@@ -83,6 +83,61 @@
 	  // dropdown show event
 	});
 
+	// ── Robust Mobile Navbar Toggle ─────────────────────────────────────────────
+	// NOTE: We intentionally do NOT toggle body.menu-show — that class triggers
+	// scroll-freeze in style.css. We manage open/close purely via the nav element.
+	function closeMobileMenu() {
+		var $nav = $('#ftco-nav');
+		$nav.stop(true, true).slideUp(250, function() {
+			$nav.removeClass('show').css('display', '');
+		});
+		$('.navbar-toggler').attr('aria-expanded', 'false');
+	}
+
+	$('.navbar-toggler').on('click', function(e) {
+		e.preventDefault();
+		var targetSelector = $(this).attr('data-target') || $(this).attr('data-bs-target') || '#ftco-nav';
+		var $target = $(targetSelector);
+		if ($target.length) {
+			var isExpanded = $(this).attr('aria-expanded') === 'true';
+			if (isExpanded) {
+				$target.stop(true, true).slideUp(250, function() {
+					$target.removeClass('show').css('display', '');
+				});
+				$(this).attr('aria-expanded', 'false');
+			} else {
+				$target.stop(true, true).slideDown(250, function() {
+					$target.addClass('show').css('display', 'block');
+				});
+				$(this).attr('aria-expanded', 'true');
+			}
+		}
+	});
+
+	// Close mobile menu on ESC key
+	$(document).on('keydown', function(e) {
+		if (e.key === 'Escape' || e.keyCode === 27) {
+			if ($(window).width() < 992) {
+				closeMobileMenu();
+			}
+		}
+	});
+
+	// Close mobile menu when clicking any nav item
+	$('#ftco-nav .nav-link').on('click', function() {
+		if ($(window).width() < 992) {
+			closeMobileMenu();
+		}
+	});
+
+	// Reset menu display on desktop resize
+	$(window).on('resize', function() {
+		if ($(window).width() >= 992) {
+			$('#ftco-nav').removeClass('show').css('display', '');
+			$('.navbar-toggler').attr('aria-expanded', 'false');
+		}
+	});
+
 	// scroll
 	var scrollWindow = function() {
 		$(window).scroll(function(){
