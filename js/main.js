@@ -178,6 +178,48 @@
 	};
 	scrollWindow();
 
+	// Mobile navigation hides on downward scroll and returns on upward scroll.
+	var lastMobileNavScroll = window.pageYOffset || 0;
+	var mobileNavThreshold = 8;
+
+	$(window).on('scroll.mobileNav', function() {
+		var nav = document.getElementById('ftco-navbar');
+		if (!nav) return;
+
+		var currentScroll = window.pageYOffset || document.documentElement.scrollTop || 0;
+		if (window.innerWidth >= 992) {
+			nav.classList.remove('mobile-nav-hidden');
+			lastMobileNavScroll = currentScroll;
+			return;
+		}
+
+		var menu = document.getElementById('ftco-nav');
+		var toggle = nav.querySelector('.navbar-toggler');
+		var menuOpen = (menu && menu.classList.contains('show')) ||
+			(toggle && toggle.getAttribute('aria-expanded') === 'true');
+
+		if (menuOpen || currentScroll <= nav.offsetHeight) {
+			nav.classList.remove('mobile-nav-hidden');
+		} else if (currentScroll > lastMobileNavScroll + mobileNavThreshold) {
+			nav.classList.add('mobile-nav-hidden');
+		} else if (currentScroll < lastMobileNavScroll - mobileNavThreshold) {
+			nav.classList.remove('mobile-nav-hidden');
+		}
+
+		lastMobileNavScroll = currentScroll;
+	});
+
+	$(window).on('resize.mobileNav', function() {
+		if (window.innerWidth >= 992) {
+			$('#ftco-navbar').removeClass('mobile-nav-hidden');
+		}
+	});
+
+	$(document).on('focusin.mobileNav', '#ftco-navbar a, #ftco-navbar button', function() {
+		$('#ftco-navbar').removeClass('mobile-nav-hidden');
+	});
+
+
 	var counter = function() {
 		
 		$('#section-counter, .hero-wrap, .ftco-counter').waypoint( function( direction ) {

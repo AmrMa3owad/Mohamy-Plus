@@ -1,28 +1,18 @@
-﻿/* ── Baseline Mobile Responsiveness & Overflow Protection ─────────── */
-html, body {
-    overflow-x: hidden !important;
-    width: 100% !important;
-    max-width: 100vw !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    position: relative;
-    -webkit-font-smoothing: antialiased;
+/* Keep site-wide defaults compatible with Bootstrap responsive grid. */
+html,
+body {
+    overflow-x: clip;
 }
 
-*, *::before, *::after {
-    box-sizing: border-box !important;
-}
+*,
+*::before,
+*::after { box-sizing: border-box; }
 
-img, svg, canvas {
-    max-width: 100% !important;
-    height: auto;
-}
+img,
+svg,
+canvas { max-width: 100%; }
 
-.container, .container-fluid {
-    width: 100% !important;
-    padding-right: 15px !important;
-    padding-left: 15px !important;
-}
+img { height: auto; }
 
 /* Site-specific styles */
 .hero-wrap {
@@ -35,7 +25,7 @@ img, svg, canvas {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Copyright bar ─────────────────────────────────────────── */
+/* -- Copyright bar ------------------------------------------- */
 .copyright-content {
     display: flex;
     align-items: center;
@@ -48,13 +38,13 @@ img, svg, canvas {
 .copyright-content .footer-signature {
     display: block;
     width: 160px;      /* modest signature size */
-    height: auto;      /* preserve natural 2.45:1 ratio — never stretch */
+    height: auto; /* preserve the image proportions */
     flex-shrink: 0;
     align-self: center;
     margin-left: auto;
 }
 
-/* ── Mobile ────────────────────────────────────────────────── */
+/* -- Mobile -------------------------------------------------- */
 @media (max-width: 575.98px) {
     .copyright-content {
         align-items: flex-start;
@@ -67,12 +57,21 @@ img, svg, canvas {
     }
 }
 
-/* ── Reduced-motion ────────────────────────────────────────── */
+/* -- Reduced-motion ------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
     .hero-wrap { animation: none; opacity: 1; }
 }
 
-/* ── Futuristic & Luxury High-Impact Goal Section ─────────────────── */
+
+/* -- Futuristic & Luxury High-Impact Goal Section ------------------- */
 .goal-section {
     background: #06080b;
     position: relative;
@@ -120,7 +119,7 @@ img, svg, canvas {
 .goal-grid-pattern {
     position: absolute;
     inset: -50% 0 -20% 0;
-    background-image: 
+    background-image:
         linear-gradient(to right, rgba(203, 184, 140, 0.045) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(203, 184, 140, 0.045) 1px, transparent 1px);
     background-size: 60px 60px;
@@ -452,7 +451,7 @@ img, svg, canvas {
    Transforms all sections across Mohamy Plus into a cohesive high-tech theme
    ========================================================================== */
 
-/* ── 1. Futuristic Navbar & Glass Header ─────────────────────────────────── */
+/* -- 1. Futuristic Navbar & Glass Header ----------------------------------- */
 .wrap {
     background: #040508 !important;
     border-bottom: 1px solid rgba(203, 184, 140, 0.15) !important;
@@ -655,7 +654,7 @@ img, svg, canvas {
     width: 65%;
 }
 
-/* ── 2. Hero Section Cyber Aesthetic ─────────────────────────────────────── */
+/* -- 2. Hero Section Cyber Aesthetic --------------------------------------- */
 .hero-wrap {
     position: relative;
 }
@@ -681,7 +680,7 @@ img, svg, canvas {
     padding-left: 18px;
 }
 
-/* ── 3. Futuristic 4 Intro Banners (Compass, Victory, Trust, Fortress) ────── */
+/* -- 3. Futuristic 4 Intro Banners (Compass, Victory, Trust, Fortress) ------ */
 .ftco-intro .intro {
     background: linear-gradient(145deg, rgba(16, 21, 30, 0.92) 0%, rgba(8, 10, 15, 0.96) 100%) !important;
     border: 1px solid rgba(203, 184, 140, 0.18) !important;
@@ -767,7 +766,7 @@ img, svg, canvas {
     margin-bottom: 0 !important;
 }
 
-/* ── 4. About Section ("Why to Put Your Trust in Us") ─────────────────────── */
+/* -- 4. About Section ("Why to Put Your Trust in Us") ----------------------- */
 .wrap-about .bg-light {
     background: linear-gradient(145deg, rgba(16, 21, 30, 0.95) 0%, rgba(9, 12, 18, 0.98) 100%) !important;
     border: 1px solid rgba(203, 184, 140, 0.18) !important;
@@ -812,7 +811,7 @@ img, svg, canvas {
     color: #ffffff !important;
 }
 
-/* ── 5. "What We Cover" (Practice Areas Grid) ────────────────────────────── */
+/* -- 5. "What We Cover" (Practice Areas Grid) ------------------------------ */
 .services-2 {
     background: linear-gradient(145deg, rgba(18, 24, 34, 0.92) 0%, rgba(10, 13, 19, 0.97) 100%) !important;
     border: 1px solid rgba(203, 184, 140, 0.15) !important;
@@ -901,7 +900,7 @@ img, svg, canvas {
     line-height: 1.75 !important;
 }
 
-/* ── 6. Futuristic Consultation / Appointment Section ────────────────────── */
+/* -- 6. Futuristic Consultation / Appointment Section ---------------------- */
 .ftco-appointment {
     position: relative;
     overflow: hidden;
@@ -965,7 +964,7 @@ img, svg, canvas {
     color: #000000 !important;
 }
 
-/* ── 7. Futuristic Blog Articles & News Cards ────────────────────────────── */
+/* -- 7. Futuristic Blog Articles & News Cards ------------------------------ */
 .blog-entry {
     background: linear-gradient(150deg, rgba(18, 24, 34, 0.9) 0%, rgba(9, 12, 17, 0.95) 100%) !important;
     border: 1px solid rgba(203, 184, 140, 0.16) !important;
@@ -1003,7 +1002,7 @@ img, svg, canvas {
     line-height: 1.7 !important;
 }
 
-/* ── 8. Futuristic Luxury VIP Footer ─────────────────────────────────────── */
+/* -- 8. Futuristic Luxury VIP Footer --------------------------------------- */
 .futuristic-footer {
     background: #05070a !important;
     position: relative;
@@ -1030,7 +1029,7 @@ img, svg, canvas {
 .footer-cyber-grid {
     position: absolute;
     inset: 0;
-    background-image: 
+    background-image:
         linear-gradient(to right, rgba(203, 184, 140, 0.025) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(203, 184, 140, 0.025) 1px, transparent 1px);
     background-size: 50px 50px;
@@ -1045,7 +1044,7 @@ img, svg, canvas {
     z-index: 2;
 }
 
-/* ── VIP Legal Consultation Banner ── */
+/* -- VIP Legal Consultation Banner -- */
 .footer-cta-card {
     background: linear-gradient(135deg, rgba(24, 32, 45, 0.9) 0%, rgba(11, 15, 22, 0.95) 100%);
     border: 1px solid rgba(203, 184, 140, 0.35);
@@ -1150,7 +1149,7 @@ img, svg, canvas {
     transform: translate(3px, -3px);
 }
 
-/* ── Brand Wrap in Footer ── */
+/* -- Brand Wrap in Footer -- */
 .footer-brand-wrap {
     display: flex;
     align-items: center;
@@ -1174,7 +1173,7 @@ img, svg, canvas {
     line-height: 1.8;
 }
 
-/* ── Social Cluster ── */
+/* -- Social Cluster -- */
 .footer-social-cluster {
     display: flex;
     gap: 10px;
@@ -1202,7 +1201,7 @@ img, svg, canvas {
     box-shadow: 0 0 20px rgba(203, 184, 140, 0.6);
 }
 
-/* ── Quick Links (Futuristic Interactive Cyber Capsule List) ── */
+/* -- Quick Links (Futuristic Interactive Cyber Capsule List) -- */
 .futuristic-footer .ftco-heading-2 {
     color: #ffffff !important;
     font-size: 1.12rem !important;
@@ -1255,7 +1254,7 @@ img, svg, canvas {
 }
 
 .footer-quick-links li a::before {
-    content: '›' !important;
+    content: "\203A" !important;
     font-size: 1.25rem !important;
     line-height: 1 !important;
     font-weight: 700 !important;
@@ -1286,7 +1285,7 @@ img, svg, canvas {
 }
 
 
-/* ── Direct Terminal Contact Node ── */
+/* -- Direct Terminal Contact Node -- */
 .footer-contact-cluster {
     display: flex;
     flex-direction: column;
@@ -1348,7 +1347,7 @@ img, svg, canvas {
     font-weight: 500;
 }
 
-/* ── Bottom Strip & Executive Signature Stage ── */
+/* -- Bottom Strip & Executive Signature Stage -- */
 .footer-bottom-strip {
     background: #030406;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -1423,8 +1422,8 @@ body {
    Guarantees zero overflow, perfect typography scaling & adaptive padding
    ========================================================================== */
 
-/* ── Navbar Toggler — MOBILE ONLY (hidden on desktop via Bootstrap navbar-expand-lg) ── */
-/* NOTE: No display property here — Bootstrap handles show/hide via media query */
+/* -- Navbar Toggler � MOBILE ONLY (hidden on desktop via Bootstrap navbar-expand-lg) -- */
+/* NOTE: No display property here � Bootstrap handles show/hide via media query */
 @media (max-width: 991.98px) {
     .navbar-toggler {
         border: 1px solid rgba(203, 184, 140, 0.45) !important;
@@ -1463,14 +1462,14 @@ body {
     }
 }
 
-/* Force hidden on desktop — belt-and-suspenders override */
+/* Force hidden on desktop � belt-and-suspenders override */
 @media (min-width: 992px) {
     .navbar-toggler {
         display: none !important;
     }
 }
 
-/* ── Tablets & Below (max-width: 991.98px) ── */
+/* -- Tablets & Below (max-width: 991.98px) -- */
 @media (max-width: 991.98px) {
     /* Navbar Mobile Dropdown Glass Styling */
     .ftco_navbar .navbar-collapse {
@@ -1536,7 +1535,7 @@ body {
     }
 }
 
-/* ── Mobile Devices (max-width: 767.98px) ── */
+/* -- Mobile Devices (max-width: 767.98px) -- */
 @media (max-width: 767.98px) {
     /* Top Header Wrap Bar */
     .wrap {
@@ -1758,7 +1757,7 @@ body {
     }
 }
 
-/* ── Small Screens & Foldables (max-width: 480px) ── */
+/* -- Small Screens & Foldables (max-width: 480px) -- */
 @media (max-width: 480px) {
     .navbar-brand {
         font-size: 1.15rem !important;
@@ -1806,11 +1805,11 @@ body {
    Hero Upgrade, Holographic About Frame, Live Counter, Legal Intelligence
    ========================================================================== */
 
-/* ── 1. Hero Dynamic Lighting & CTA Elements ── */
+/* -- 1. Hero Dynamic Lighting & CTA Elements -- */
 .hero-grid-ambient {
     position: absolute;
     inset: 0;
-    background-image: 
+    background-image:
         linear-gradient(to right, rgba(203, 184, 140, 0.04) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(203, 184, 140, 0.04) 1px, transparent 1px);
     background-size: 70px 70px;
@@ -1934,8 +1933,9 @@ body {
 .hero-scroll-indicator {
     position: absolute;
     bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 24px;
+    left: auto;
+    transform: none;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1973,12 +1973,16 @@ body {
     100% { opacity: 0; transform: translate(-50%, 14px); }
 }
 
-.hero-scroll-indicator:hover {
-    color: #dfceaa;
-    transform: translateX(-50%) translateY(3px);
+@media (max-width: 767px) {
+    .hero-scroll-indicator { display: none; }
 }
 
-/* ── 2. Holographic About Section ── */
+.hero-scroll-indicator:hover {
+    color: #dfceaa;
+    transform: translateY(3px);
+}
+
+/* -- 2. Holographic About Section -- */
 .about-futuristic-section {
     background: #080a0e;
     position: relative;
@@ -2155,7 +2159,7 @@ body {
     margin-bottom: 0;
 }
 
-/* ── 3. Live Metrics / Milestones Bar ── */
+/* -- 3. Live Metrics / Milestones Bar -- */
 .metrics-counter-section {
     background: linear-gradient(180deg, #080a0e 0%, #0c0f16 50%, #080a0e 100%);
     border-top: 1px solid rgba(203, 184, 140, 0.15);
@@ -2199,7 +2203,7 @@ body {
     font-weight: 600;
 }
 
-/* ── 4. Legal Intelligence / Articles Section ── */
+/* -- 4. Legal Intelligence / Articles Section -- */
 .articles-futuristic-section {
     background: #090c10;
     position: relative;
@@ -2475,7 +2479,7 @@ body {
     margin-bottom: 0;
 }
 
-/* ── The Cyber Terminal UI Card ── */
+/* -- The Cyber Terminal UI Card -- */
 .cyber-terminal-card {
     background: linear-gradient(160deg, rgba(18, 24, 34, 0.94) 0%, rgba(9, 12, 17, 0.98) 100%);
     border: 1px solid rgba(203, 184, 140, 0.3);
@@ -2803,7 +2807,7 @@ body {
     background: rgba(203, 184, 140, 0.08);
 }
 
-.vault-guarantee-note {
+.vault-privacy-note {
     font-size: 0.78rem;
     color: rgba(203, 184, 140, 0.75);
     letter-spacing: 0.5px;
@@ -2827,7 +2831,7 @@ body {
    Groundbreaking testimonial & institutional partnership visual architecture
    ========================================================================== */
 
-/* ── 1. Infinite Holographic Client Stream ── */
+/* -- 1. Infinite Holographic Client Stream -- */
 .client-network-section {
     background: #06080b;
     border-top: 1px solid rgba(203, 184, 140, 0.12);
@@ -2916,7 +2920,7 @@ body {
     transform: scale(1.2);
 }
 
-/* ── 2. Biometric Case Dossiers & Verdicts ── */
+/* -- 2. Biometric Case Dossiers & Verdicts -- */
 .testimonials-dossier-section {
     background: radial-gradient(circle at 50% 20%, #111622 0%, #06080b 80%);
     position: relative;
@@ -3105,7 +3109,7 @@ body {
    Hero Headers, Case Cards, Attorney Cards, Contact Terminal & Blog Single
    ========================================================================== */
 
-/* ── 1. Cyber-Luxury Subpage Hero (hero-wrap-2) ── */
+/* -- 1. Cyber-Luxury Subpage Hero (hero-wrap-2) -- */
 .hero-wrap.hero-wrap-2 {
     position: relative !important;
     background-color: #05070a !important;
@@ -3141,7 +3145,7 @@ body {
     text-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
 }
 
-/* ── 2. Cases / Practice Grid Interactive Cyber Cards ── */
+/* -- 2. Cases / Practice Grid Interactive Cyber Cards -- */
 .case-wrap {
     border-radius: 20px !important;
     overflow: hidden !important;
@@ -3180,7 +3184,7 @@ body {
     font-size: 0.9rem !important;
 }
 
-/* ── 3. Attorney High-Tech Bio Cards ── */
+/* -- 3. Attorney High-Tech Bio Cards -- */
 .staff {
     background: linear-gradient(150deg, rgba(18, 24, 34, 0.9) 0%, rgba(9, 12, 17, 0.96) 100%) !important;
     border: 1px solid rgba(203, 184, 140, 0.18) !important;
@@ -3245,7 +3249,7 @@ body {
     box-shadow: 0 0 15px rgba(203, 184, 140, 0.5) !important;
 }
 
-/* ── 4. Contact Page Glass Terminal & Map Frame ── */
+/* -- 4. Contact Page Glass Terminal & Map Frame -- */
 .contact-wrap {
     background: linear-gradient(155deg, rgba(18, 24, 34, 0.92) 0%, rgba(9, 12, 17, 0.97) 100%) !important;
     border: 1px solid rgba(203, 184, 140, 0.22) !important;
@@ -3347,7 +3351,7 @@ body {
     color: #dfceaa !important;
 }
 
-/* ── 15. Cyber Contact Universe (Contact Page Luxury Dark Atmosphere) ── */
+/* -- 15. Cyber Contact Universe (Contact Page Luxury Dark Atmosphere) -- */
 .cyber-contact-universe {
     background: radial-gradient(circle at 50% 0%, rgba(203, 184, 140, 0.09) 0%, transparent 60%),
                 radial-gradient(circle at 100% 50%, rgba(20, 28, 42, 0.7) 0%, transparent 50%),
@@ -3365,7 +3369,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
+    background-image:
         linear-gradient(rgba(203, 184, 140, 0.035) 1px, transparent 1px),
         linear-gradient(90deg, rgba(203, 184, 140, 0.035) 1px, transparent 1px);
     background-size: 55px 55px;
@@ -3378,7 +3382,7 @@ body {
     border: none !important;
 }
 
-/* ── 16. Executive Counsel Command Node (Contact Us Replacement for Maps) ── */
+/* -- 16. Executive Counsel Command Node (Contact Us Replacement for Maps) -- */
 .executive-counsel-card {
     background: linear-gradient(145deg, rgba(16, 21, 30, 0.96) 0%, rgba(9, 12, 17, 0.98) 100%) !important;
     border: 1px solid rgba(203, 184, 140, 0.28) !important;
@@ -3549,7 +3553,7 @@ body {
     filter: brightness(1.08);
 }
 
-/* ── 17. Blog Single Dark Architecture ────────────────────────────────────── */
+/* -- 17. Blog Single Dark Architecture -------------------------------------- */
 .about-author.bg-light,
 .comment-form-wrap form.bg-light {
     background: linear-gradient(145deg, rgba(16, 21, 30, 0.96) 0%, rgba(9, 12, 17, 0.98) 100%) !important;
@@ -3578,17 +3582,19 @@ body {
 
 
 /* ============================================================
-   CUSTOM OVERRIDES — appended by css-fixer
+   CUSTOM OVERRIDES � appended by css-fixer
    ============================================================ */
 
-/* ── Fix navbar z-index to always be on top ── */
+/* -- Fix navbar z-index to always be on top -- */
 .ftco-navbar-light,
 nav.ftco_navbar {
     z-index: 1000 !important;
-    position: relative !important;
+    position: sticky !important;
+    top: 0 !important;
+    margin-top: 0 !important;
 }
 
-/* ── Fix mobile menu scroll freeze (override style.css) ── */
+/* -- Fix mobile menu scroll freeze (override style.css) -- */
 body.menu-show {
     overflow: auto !important;
     position: relative !important;
@@ -3605,7 +3611,7 @@ body.menu-show {
     }
 }
 
-/* ── Subpage Hero — Full Impact Height Fix ── */
+/* -- Subpage Hero � Full Impact Height Fix -- */
 .hero-wrap.hero-wrap-2 {
     min-height: 45vh !important;
     height: auto !important;
@@ -3631,7 +3637,7 @@ body.menu-show {
     }
 }
 
-/* ── Override white bg-light areas in blog-single ── */
+/* -- Override white bg-light areas in blog-single -- */
 .p-5.bg-light,
 .about-author.bg-light,
 .bg-light {
@@ -3651,7 +3657,20 @@ form.bg-light,
     border-radius: 16px !important;
 }
 
-/* ── Page layout — ensure sections fill viewport ── */
+/* Blog article sidebar surfaces */
+.ftco-degree-bg .sidebar-box {
+    background: rgba(12, 16, 24, 0.92);
+    border: 1px solid rgba(203, 184, 140, 0.16);
+    border-radius: 14px;
+    padding: 22px;
+    color: rgba(255, 255, 255, 0.78);
+}
+.ftco-degree-bg .sidebar-box h3 { color: #fff; }
+.ftco-degree-bg .sidebar-box a { color: rgba(255, 255, 255, 0.82); }
+.ftco-degree-bg .sidebar-box a:hover,
+.ftco-degree-bg .sidebar-box a:focus { color: #dfceaa; }
+.ftco-degree-bg .sidebar-box .categories li { border-color: rgba(255, 255, 255, 0.1); }
+/* -- Page layout � ensure sections fill viewport -- */
 .ftco-section {
     min-height: auto;
 }
@@ -3668,7 +3687,7 @@ footer.ftco-footer {
     margin-top: auto;
 }
 
-/* ── Contact dbox dark card fix ── */
+/* -- Contact dbox dark card fix -- */
 .cyber-contact-universe .dbox {
     background: rgba(12, 16, 26, 0.9) !important;
     border: 1px solid rgba(203, 184, 140, 0.2) !important;
@@ -3712,7 +3731,7 @@ footer.ftco-footer {
     color: #dfceaa !important;
 }
 
-/* ── Global form dark theme fix ── */
+/* -- Global form dark theme fix -- */
 input.form-control,
 textarea.form-control,
 select.form-control {
@@ -3737,7 +3756,7 @@ select.form-control:focus {
     outline: none !important;
 }
 
-/* ── Wrap bar responsive fix ── */
+/* -- Wrap bar responsive fix -- */
 @media (max-width: 575px) {
     .wrap .wrap-status-badge {
         display: none !important;
@@ -3866,7 +3885,7 @@ html, body {
     background: transparent !important;
 }
 
-/* Mobile nav dropdown — Completely hide scrollbar inside glass card, retain smooth touch scrolling */
+/* Mobile nav dropdown � Completely hide scrollbar inside glass card, retain smooth touch scrolling */
 @media (max-width: 991.98px) {
     #ftco-nav,
     .navbar-collapse {
@@ -3884,7 +3903,7 @@ html, body {
 }
 
 /* =========================================================
-   DESIGN REVISIONS — Global polish pass
+   DESIGN REVISIONS � Global polish pass
    ========================================================= */
 
 /* Ensure wrap bar never pushes content below navbar */
@@ -3900,7 +3919,7 @@ html, body {
     margin-right: 10px !important;
 }
 
-/* Nav links — cleaner gold underline on active */
+/* Nav links � cleaner gold underline on active */
 .ftco-navbar-light .navbar-nav > .nav-item.active > .nav-link::after {
     width: 100% !important;
     opacity: 1 !important;
@@ -3911,7 +3930,7 @@ html, body {
     text-shadow: 0 4px 30px rgba(0,0,0,0.9) !important;
 }
 
-/* Section headings — remove stray white override for non-dark sections */
+/* Section headings � remove stray white override for non-dark sections */
 .hero-wrap h1,
 .hero-wrap .breadcrumbs,
 .hero-wrap p {
@@ -3958,7 +3977,7 @@ html, body {
     font-size: 2.5rem !important;
 }
 
-/* dbox on contact page — ensure icon color correct */
+/* dbox on contact page � ensure icon color correct */
 .dbox .icon span {
     color: #dfceaa !important;
 }
@@ -3978,7 +3997,7 @@ html, body {
 }
 
 
-/* ── Ironclad Desktop Toggler Elimination (Cannot show on desktop under ANY circumstance) ── */
+/* -- Ironclad Desktop Toggler Elimination (Cannot show on desktop under ANY circumstance) -- */
 @media (min-width: 992px) {
     .navbar-toggler,
     button.navbar-toggler,
@@ -3997,7 +4016,7 @@ html, body {
     }
 }
 
-/* ── Scrolled Navbar Link Color Preservation ── */
+/* -- Scrolled Navbar Link Color Preservation -- */
 .ftco-navbar-light.scrolled .nav-link,
 .ftco-navbar-light.scrolled .navbar-nav > .nav-item > .nav-link {
     color: rgba(255, 255, 255, 0.88) !important;
@@ -4013,7 +4032,7 @@ html, body {
     color: #dfceaa !important;
 }
 
-/* ── Pagination (.block-27) Cyber-Luxury Styling ── */
+/* -- Pagination (.block-27) Cyber-Luxury Styling -- */
 .block-27 ul li a,
 .block-27 ul li span {
     background: rgba(10, 14, 22, 0.85) !important;
@@ -4040,7 +4059,7 @@ html, body {
     box-shadow: 0 0 20px rgba(203, 184, 140, 0.45) !important;
 }
 
-/* ── Staff / Attorney Cards Dark Luxury Polish ── */
+/* -- Staff / Attorney Cards Dark Luxury Polish -- */
 .staff {
     background: rgba(10, 14, 22, 0.9) !important;
     border: 1px solid rgba(203, 184, 140, 0.2) !important;
@@ -4072,8 +4091,169 @@ html, body {
     color: rgba(255, 255, 255, 0.65) !important;
 }
 
-/* ── Subpages Full-Width Content Alignment ── */
+/* -- Subpages Full-Width Content Alignment -- */
 .hero-wrap.hero-wrap-2 .container,
 .ftco-section > .container {
     max-width: 1200px !important;
+}
+
+.team-overview { background: #080b10; }
+.team-overview-intro { color: rgba(255,255,255,.72); line-height: 1.8; }
+.practice-card { padding: 1.75rem; border: 1px solid rgba(203,184,140,.2); border-radius: 16px; background: linear-gradient(145deg, rgba(255,255,255,.04), rgba(13,17,24,.9)); }
+.practice-card > span { display: inline-block; margin-bottom: 1rem; color: #dfceaa; font-size: 1.75rem; }
+.practice-card h3 { color: #fff; font-size: 1.2rem; }
+.practice-card p { margin: 0; color: rgba(255,255,255,.68); line-height: 1.7; }
+
+.blog-search-status { color: #dfceaa; font-weight: 600; }
+.blog-search-status:empty { display: none; }
+.legal-article-list { list-style: disc; padding-left: 1.5rem; color: rgba(255,255,255,.72); line-height: 1.8; }
+.legal-article-list li + li { margin-top: .65rem; }
+.legal-article-list strong { color: #dfceaa; }
+.brand-principles { background: #080b10; border-top: 1px solid rgba(203,184,140,.15); border-bottom: 1px solid rgba(203,184,140,.15); }
+.brand-principles strong { display: block; color: #dfceaa; letter-spacing: .04em; }
+.brand-principles p { margin: .35rem 0 0; color: rgba(255,255,255,.7); font-size: .9rem; }
+[hidden] { display: none !important; }
+
+:focus-visible { outline: 3px solid #dfceaa; outline-offset: 3px; }
+/* Footer layout and link spacing */
+.ftco-footer .row.mb-5 { row-gap: 2.25rem; margin-bottom: 2.75rem !important; }
+.ftco-footer-widget > .ftco-heading-2 { margin-bottom: 1.25rem !important; }
+.footer-brand-desc { max-width: 360px; line-height: 1.75; }
+.footer-quick-links { display: grid; gap: .35rem; }
+.footer-quick-links li { margin: 0 !important; }
+.footer-quick-links li a {
+    width: fit-content !important;
+    max-width: 100% !important;
+    min-height: 40px;
+    padding: 8px 10px !important;
+    white-space: nowrap;
+    background: transparent !important;
+    border-color: transparent !important;
+}
+.footer-quick-links li a::before { content: "\203A" !important; font-family: inherit !important; }
+.footer-quick-links li a:hover { transform: translateX(3px) !important; }
+.footer-contact-cluster { gap: 12px; }
+.footer-contact-item { min-height: 76px; padding: 13px 15px; }
+@media (max-width: 991.98px) {
+    .footer-quick-links li a { width: 100% !important; white-space: normal; }
+}
+.client-logo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; align-items: center; }
+.client-logo-tile { min-height: 92px; display: flex; align-items: center; justify-content: center; padding: 1rem; border: 1px solid rgba(203,184,140,.2); border-radius: 14px; background: rgba(255,255,255,.03); }
+.client-logo-tile img { max-width: 100%; max-height: 56px; width: auto; height: auto; object-fit: contain; }
+
+
+/* Empty states for manually managed client and testimonial content */
+.client-content-empty {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 1.25rem;
+    border: 1px dashed rgba(203, 184, 140, 0.28);
+    border-radius: 14px;
+    color: rgba(255, 255, 255, 0.62);
+    text-align: center;
+}
+
+
+/* Screenshot fixes: separate hero actions and footer status dot */
+.hero-cta-cluster {
+    gap: 14px;
+}
+
+.footer-pill-badge {
+    gap: 8px;
+}
+
+.footer-pill-badge .live-pulse-dot {
+    flex: 0 0 8px;
+    box-shadow: 0 0 5px rgba(0, 255, 136, 0.7);
+}
+
+
+/* Consistent trust-card icon alignment across breakpoints */
+.ftco-intro .intro {
+    display: flex !important;
+    align-items: flex-start;
+}
+
+.ftco-intro .intro .icon {
+    flex: 0 0 54px;
+    width: 54px !important;
+    height: 54px !important;
+    margin: 3px 14px 0 0 !important;
+}
+
+.ftco-intro .intro .text {
+    min-width: 0;
+}
+
+@media (max-width: 575.98px) {
+    .ftco-intro .intro {
+        padding: 20px 16px !important;
+    }
+
+    .ftco-intro .intro .icon {
+        flex-basis: 54px;
+        width: 54px !important;
+        height: 54px !important;
+        margin-right: 14px !important;
+    }
+
+    .ftco-intro .intro .icon span {
+        font-size: 1.55rem !important;
+    }
+}
+
+
+/* Keep the mobile hero below the sticky navbar */
+@media (max-width: 767.98px) {
+    .hero-wrap {
+        margin-top: 0 !important;
+    }
+}
+
+
+/* Slide the mobile navbar away while scrolling down; reveal it on scroll-up. */
+@media (max-width: 991.98px) {
+    nav.ftco_navbar.mobile-nav-hidden {
+        transform: translateY(-110%);
+        visibility: hidden;
+        pointer-events: none;
+    }
+}
+
+
+/* Keep testimonial metadata readable without collisions at card widths. */
+.dossier-top-meta {
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.dossier-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+.dossier-matter {
+    white-space: nowrap;
+}
+
+
+/* Keep case label and matter type on one clean line. */
+.dossier-top-meta {
+    flex-wrap: nowrap;
+    gap: 6px;
+}
+
+.dossier-tag {
+    padding: 4px 8px;
+    font-size: 0.62rem;
+    letter-spacing: 0.8px;
+}
+
+.dossier-matter {
+    font-size: 0.65rem;
+    letter-spacing: 1px;
 }
