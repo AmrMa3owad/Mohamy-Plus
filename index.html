@@ -22,6 +22,7 @@
     <!-- Vendor CSS Files -->
     <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
+	<link href="css/creative.css" rel="stylesheet">
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 </head>
 
@@ -68,7 +69,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="images/logo.png" alt="Logo">
+                <picture><source type="image/webp" srcset="images/logo.webp"><img loading="eager" fetchpriority="high" width="493" height="353" decoding="async" style="width:auto" src="images/logo.png" alt="Logo"></picture>
                 Mohamy Plus
             </a>
             <button class="navbar-toggler d-lg-none" type="button" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,7 +91,7 @@
     </nav>
     <!-- END nav -->
 
-    <div class="hero-wrap" style="background-image: url('images/hero2.jpg');" data-stellar-background-ratio="0.5">
+    <div class="hero-wrap" style="background-image: url('images/hero2.jpg'); background-image: image-set(url('images/hero2.webp') type('image/webp'), url('images/hero2.jpg') type('image/jpeg'));" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <!-- Ambient Hero Cyber Grid & Light Glow -->
         <div class="hero-grid-ambient"></div>
@@ -194,38 +195,28 @@
     </section>
 
     <!-- ===================== ABOUT SECTION (HOLOGRAPHIC REDESIGN) ===================== -->
-    <section class="ftco-section ftco-no-pb ftco-no-pt about-futuristic-section">
+    <section class="ftco-section ftco-no-pb ftco-no-pt cx-scope cx-about-home" aria-labelledby="cx-about-home-title">
         <div class="container">
-            <div class="row align-items-center py-5">
+            <div class="row align-items-center py-5 cx-about-layout">
                 <!-- Left Holographic Frame Image -->
-                <div class="col-lg-5 mb-5 mb-lg-0 ftco-animate">
-                    <div class="about-holo-frame">
-                        <div class="holo-frame-border"></div>
-                        <div class="holo-frame-scanline"></div>
-                        <div class="about-img-box" style="background-image: url(images/about1.jpg);"></div>
-
-                        <!-- Floating VIP Stat Badge -->
-                        <div class="holo-badge-card">
-                            <div class="badge-icon">
-                                <i class="bi bi-shield-check"></i>
-                            </div>
-                            <div>
-                                <span class="badge-metric">Tailored</span>
-                                <span class="badge-sub">Guidance for your matter</span>
-                            </div>
+                <div class="col-lg-5 mb-5 mb-lg-0 ftco-animate cx-about-visual">
+                    <div class="cx-about-media">
+                        <div class="cx-about-photo" style="background-image: url('images/about1.jpg'); background-image: image-set(url('images/about1.webp') type('image/webp'), url('images/about1.jpg') type('image/jpeg'));" aria-hidden="true"></div>
+                        <div class="cx-about-caption">
+                            <i class="bi bi-shield-check" aria-hidden="true"></i>
+                            <span><strong>Tailored</strong><small>Guidance for your matter</small></span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Pillars of Trust -->
-                <div class="col-lg-7 pl-lg-5 ftco-animate">
-                    <div class="about-content-wrap">
-                        <div class="goal-pill-tag mb-3">
-                            <span class="pill-dot"></span>
+                <div class="col-lg-7 pl-lg-5 ftco-animate cx-about-copy">
+                    <div class="cx-about-lead">
+                        <div class="cx-about-kicker mb-3">
+                            <span class="cx-about-dot"></span>
                             The Mohamy Plus Standard
                         </div>
-                        <h2 class="about-main-title mb-4">Why Industry Leaders <span>Place Their Trust in Us</span></h2>
-                        <p class="about-main-desc mb-5">
+                        <h2 class="cx-about-title mb-4" id="cx-about-home-title">Why Industry Leaders <span>Place Their Trust in Us</span></h2>
+                        <p class="cx-about-description mb-5">
                             Our firm is engineered on the foundational pillars of uncompromising legal mastery, strategic defense architecture, and dedicated client-first advocacy across all statutory terrains.
                         </p>
 
@@ -659,7 +650,7 @@
     <!-- ================== END OUR GOAL SECTION ==================== -->
 
     <!-- ===================== THE VAULT: WHATSAPP HANDOFF LEGAL INTAKE & WAR ROOM ===================== -->
-    <section class="ftco-appointment ftco-section img legal-vault-section" style="background-image: url(images/appointment5.jpg);">
+    <section class="ftco-appointment ftco-section img legal-vault-section" style="background-image: url('images/appointment5.jpg'); background-image: image-set(url('images/appointment5.webp') type('image/webp'), url('images/appointment5.jpg') type('image/jpeg'));">
         <div class="overlay"></div>
         <div class="vault-ambient-beam"></div>
 
@@ -943,7 +934,7 @@
                 <div class="col-lg-4 col-md-6 mb-4 d-flex ftco-animate">
                     <div class="article-glass-card w-100">
                         <div class="article-img-wrap">
-                            <div class="article-img" style="background-image: url('images/image_1.jpg');"></div>
+                            <div class="article-img" style="background-image: url('images/image_1.jpg'); background-image: image-set(url('images/image_1.webp') type('image/webp'), url('images/image_1.jpg') type('image/jpeg'));"></div>
                             <span class="article-category-badge">Corporate Governance</span>
                         </div>
                         <div class="article-body">
@@ -971,7 +962,7 @@
                 <div class="col-lg-4 col-md-6 mb-4 d-flex ftco-animate">
                     <div class="article-glass-card w-100">
                         <div class="article-img-wrap">
-                            <div class="article-img" style="background-image: url('images/image_2.jpg');"></div>
+                            <div class="article-img" style="background-image: url('images/image_2.jpg'); background-image: image-set(url('images/image_2.webp') type('image/webp'), url('images/image_2.jpg') type('image/jpeg'));"></div>
                             <span class="article-category-badge">M&amp;A Architecture</span>
                         </div>
                         <div class="article-body">
@@ -999,7 +990,7 @@
                 <div class="col-lg-4 col-md-6 mb-4 d-flex ftco-animate">
                     <div class="article-glass-card w-100">
                         <div class="article-img-wrap">
-                            <div class="article-img" style="background-image: url('images/image_3.jpg');"></div>
+                            <div class="article-img" style="background-image: url('images/image_3.jpg'); background-image: image-set(url('images/image_3.webp') type('image/webp'), url('images/image_3.jpg') type('image/jpeg'));"></div>
                             <span class="article-category-badge">Arbitration &amp; Dispute</span>
                         </div>
                         <div class="article-body">
@@ -1062,7 +1053,7 @@
                 <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                     <div class="ftco-footer-widget">
                         <div class="footer-brand-wrap mb-3">
-                            <img src="images/logo.png" alt="Mohamy Plus Logo" class="footer-logo-img">
+                            <picture><source type="image/webp" srcset="images/logo.webp"><img loading="lazy" width="493" height="353" decoding="async" src="images/logo.png" alt="Mohamy Plus Logo" class="footer-logo-img"></picture>
                             <h2 class="ftco-heading-2 logo mb-0">Mohamy Plus</h2>
                         </div>
                         <p class="footer-brand-desc">
@@ -1171,7 +1162,7 @@
                     <div class="col-md-6 text-center text-md-right d-flex align-items-center justify-content-center justify-content-md-end">
                         <div class="signature-stage">
                             <span class="signature-label">Executive Counsel</span>
-                            <img class="footer-signature-glow" src="images/amr-maowad-signature.png" alt="Amr Maowad Signature" loading="lazy" decoding="async">
+                            <picture><source type="image/webp" srcset="images/amr-maowad-signature.webp"><img loading="lazy" width="400" height="163" decoding="async" class="footer-signature-glow" src="images/amr-maowad-signature.png" alt="Amr Maowad Signature"></picture>
                         </div>
                     </div>
                 </div>
@@ -1205,6 +1196,7 @@
     <!-- Goal Interactive Canvas & 3D Tilt Script -->
     <script src="js/home-effects.js"></script>
 <script src="js/vault-intake.js"></script>
+    <script src="js/creative.js"></script>
 </body>
 
 </html>
