@@ -1,0 +1,321 @@
+{
+  "index": {
+    "375x667": {
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 375,
+      "docWidth": 375,
+      "bodyWidth": 500,
+      "overflow": false,
+      "aboutRect": {
+        "x": 0,
+        "y": 1564.9375,
+        "width": 375,
+        "height": 1707.421875,
+        "top": 1564.9375,
+        "right": 375,
+        "bottom": 3272.359375,
+        "left": 0
+      },
+      "pictures": [
+        {
+          "rect": {
+            "x": 13.427505493164062,
+            "y": 1675.2288818359375,
+            "width": 348.14501953125,
+            "height": 366.5736083984375,
+            "top": 1675.2288818359375,
+            "right": 361.57252502441406,
+            "bottom": 2041.802490234375,
+            "left": 13.427505493164062
+          },
+          "clip": "inset(0px 0px 100% round 20px)",
+          "visible": false
+        }
+      ],
+      "jq": true,
+      "owl": true,
+      "owlInstances": 0,
+      "mobileMenuOpen": true
+    },
+    "768x1024": {
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 768,
+      "docWidth": 768,
+      "bodyWidth": 768,
+      "overflow": false,
+      "aboutRect": {
+        "x": 0,
+        "y": 1187.609375,
+        "width": 768,
+        "height": 1614.90625,
+        "top": 1187.609375,
+        "right": 768,
+        "bottom": 2802.515625,
+        "left": 0
+      },
+      "pictures": [
+        {
+          "rect": {
+            "x": 108.93499755859375,
+            "y": 1303.8802490234375,
+            "width": 550.1300048828125,
+            "height": 640.005126953125,
+            "top": 1303.8802490234375,
+            "right": 659.0650024414062,
+            "bottom": 1943.8853759765625,
+            "left": 108.93499755859375
+          },
+          "clip": "inset(0px 0px 100% round 20px)",
+          "visible": false
+        }
+      ],
+      "jq": true,
+      "owl": true,
+      "owlInstances": 0
+    },
+    "1366x768": {
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 1366,
+      "docWidth": 1366,
+      "bodyWidth": 1366,
+      "overflow": false,
+      "aboutRect": {
+        "x": 0,
+        "y": 1058.046875,
+        "width": 1366,
+        "height": 1075.671875,
+        "top": 1058.046875,
+        "right": 1366,
+        "bottom": 2133.71875,
+        "left": 0
+      },
+      "pictures": [
+        {
+          "rect": {
+            "x": 95.49000549316406,
+            "y": 1319.541259765625,
+            "width": 475.02001953125,
+            "height": 552.66748046875,
+            "top": 1319.541259765625,
+            "right": 570.5100250244141,
+            "bottom": 1872.208740234375,
+            "left": 95.49000549316406
+          },
+          "clip": "inset(0px 0px 100% round 20px)",
+          "visible": false
+        }
+      ],
+      "jq": true,
+      "owl": true,
+      "owlInstances": 0,
+      "revealVisible": true
+    },
+    "1920x1080": {
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 1920,
+      "docWidth": 1920,
+      "bodyWidth": 1920,
+      "overflow": false,
+      "aboutRect": {
+        "x": 0,
+        "y": 979.484375,
+        "width": 1920,
+        "height": 1145.4375,
+        "top": 979.484375,
+        "right": 1920,
+        "bottom": 2124.921875,
+        "left": 0
+      },
+      "pictures": [
+        {
+          "rect": {
+            "x": 372.489990234375,
+            "y": 1275.869384765625,
+            "width": 475.02001953125,
+            "height": 552.66748046875,
+            "top": 1275.869384765625,
+            "right": 847.510009765625,
+            "bottom": 1828.536865234375,
+            "left": 372.489990234375
+          },
+          "clip": "inset(0px 0px 100% round 20px)",
+          "visible": false
+        }
+      ],
+      "jq": true,
+      "owl": true,
+      "owlInstances": 0
+    }
+  },
+  "about": {
+    "375x667": {
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 375,
+      "docWidth": 375,
+      "bodyWidth": 375,
+      "overflow": false,
+      "aboutRect": {
+        "x": 0,
+        "y": 572.390625,
+        "width": 375,
+        "height": 1162.21875,
+        "top": 572.390625,
+        "right": 375,
+        "bottom": 1734.609375,
+        "left": 0
+      },
+      "pictures": [
+        {
+          "rect": {
+            "x": 15,
+            "y": 620.390625,
+            "width": 345,
+            "height": 356.25,
+            "top": 620.390625,
+            "right": 360,
+            "bottom": 976.640625,
+            "left": 15
+          },
+          "clip": "inset(0px 0px 100% round 20px)",
+          "visible": false
+        }
+      ],
+      "jq": true,
+      "owl": true,
+      "owlInstances": 0,
+      "mobileMenuOpen": true
+    },
+    "768x1024": {
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 768,
+      "docWidth": 768,
+      "bodyWidth": 768,
+      "overflow": false,
+      "aboutRect": {
+        "x": 0,
+        "y": 651.71875,
+        "width": 768,
+        "height": 1081.875,
+        "top": 651.71875,
+        "right": 768,
+        "bottom": 1733.59375,
+        "left": 0
+      },
+      "pictures": [
+        {
+          "rect": {
+            "x": 15,
+            "y": 723.71875,
+            "width": 369,
+            "height": 400,
+            "top": 723.71875,
+            "right": 384,
+            "bottom": 1123.71875,
+            "left": 15
+          },
+          "clip": "inset(0px round 20px)",
+          "visible": true
+        }
+      ],
+      "jq": true,
+      "owl": true,
+      "owlInstances": 0
+    },
+    "1366x768": {
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 1366,
+      "docWidth": 1366,
+      "bodyWidth": 1366,
+      "overflow": false,
+      "aboutRect": {
+        "x": 0,
+        "y": 605.921875,
+        "width": 1366,
+        "height": 890.53125,
+        "top": 605.921875,
+        "right": 1366,
+        "bottom": 1496.453125,
+        "left": 0
+      },
+      "pictures": [
+        {
+          "rect": {
+            "x": 98,
+            "y": 715.1875,
+            "width": 585,
+            "height": 672,
+            "top": 715.1875,
+            "right": 683,
+            "bottom": 1387.1875,
+            "left": 98
+          },
+          "clip": "inset(0px 0px 100% round 20px)",
+          "visible": false
+        }
+      ],
+      "jq": true,
+      "owl": true,
+      "owlInstances": 0,
+      "revealVisible": true,
+      "videoHref": "https://vimeo.com/45830194",
+      "videoFocused": true
+    },
+    "1920x1080": {
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "width": 1920,
+      "docWidth": 1920,
+      "bodyWidth": 1920,
+      "overflow": false,
+      "aboutRect": {
+        "x": 0,
+        "y": 691.921875,
+        "width": 1920,
+        "height": 928,
+        "top": 691.921875,
+        "right": 1920,
+        "bottom": 1619.921875,
+        "left": 0
+      },
+      "pictures": [
+        {
+          "rect": {
+            "x": 375,
+            "y": 819.921875,
+            "width": 585,
+            "height": 672,
+            "top": 819.921875,
+            "right": 960,
+            "bottom": 1491.921875,
+            "left": 375
+          },
+          "clip": "inset(0px round 20px)",
+          "visible": true
+        }
+      ],
+      "jq": true,
+      "owl": true,
+      "owlInstances": 0
+    }
+  },
+  "reducedMotion": {
+    "armed": false,
+    "clip": "none",
+    "transition": "1e-05s"
+  }
+}

@@ -1,0 +1,485 @@
+{
+  "index": {
+    "errors": [],
+    "failed": [],
+    "imgs": [
+      {
+        "src": "logo.webp",
+        "width": 493,
+        "height": 353,
+        "rect": [
+          52,
+          42
+        ]
+      },
+      {
+        "src": "logo.webp",
+        "width": 493,
+        "height": 353,
+        "rect": [
+          48,
+          39
+        ]
+      },
+      {
+        "src": "amr-maowad-signature.webp",
+        "width": 400,
+        "height": 163,
+        "rect": [
+          140,
+          50
+        ]
+      }
+    ],
+    "resources": [
+      {
+        "name": "logo.webp",
+        "transfer": 58942,
+        "duration": 27
+      },
+      {
+        "name": "hero2.webp",
+        "transfer": 82108,
+        "duration": 3
+      },
+      {
+        "name": "about1.webp",
+        "transfer": 243826,
+        "duration": 17
+      },
+      {
+        "name": "appointment5.webp",
+        "transfer": 300372,
+        "duration": 3
+      },
+      {
+        "name": "image_1.webp",
+        "transfer": 62436,
+        "duration": 4
+      },
+      {
+        "name": "image_2.webp",
+        "transfer": 74096,
+        "duration": 4
+      },
+      {
+        "name": "image_3.webp",
+        "transfer": 46474,
+        "duration": 4
+      },
+      {
+        "name": "amr-maowad-signature.webp",
+        "transfer": 10310,
+        "duration": 10
+      }
+    ],
+    "overflow": false
+  },
+  "about": {
+    "errors": [],
+    "failed": [],
+    "imgs": [
+      {
+        "src": "logo.webp",
+        "width": 493,
+        "height": 353,
+        "rect": [
+          52,
+          42
+        ]
+      },
+      {
+        "src": "logo.webp",
+        "width": 493,
+        "height": 353,
+        "rect": [
+          48,
+          39
+        ]
+      },
+      {
+        "src": "amr-maowad-signature.webp",
+        "width": 400,
+        "height": 163,
+        "rect": [
+          140,
+          50
+        ]
+      }
+    ],
+    "resources": [
+      {
+        "name": "logo.webp",
+        "transfer": 58942,
+        "duration": 18
+      },
+      {
+        "name": "bg_5.webp",
+        "transfer": 166088,
+        "duration": 5
+      },
+      {
+        "name": "about-1.webp",
+        "transfer": 105940,
+        "duration": 4
+      },
+      {
+        "name": "amr-maowad-signature.webp",
+        "transfer": 10310,
+        "duration": 8
+      }
+    ],
+    "overflow": false
+  },
+  "attorney": {
+    "errors": [],
+    "failed": [],
+    "imgs": [
+      {
+        "src": "logo.webp",
+        "width": 493,
+        "height": 353,
+        "rect": [
+          52,
+          42
+        ]
+      },
+      {
+        "src": "logo.webp",
+        "width": 493,
+        "height": 353,
+        "rect": [
+          48,
+          39
+        ]
+      },
+      {
+        "src": "amr-maowad-signature.webp",
+        "width": 400,
+        "height": 163,
+        "rect": [
+          140,
+          50
+        ]
+      }
+    ],
+    "resources": [
+      {
+        "name": "logo.webp",
+        "transfer": 58942,
+        "duration": 21
+      },
+      {
+        "name": "bg_5.webp",
+        "transfer": 166088,
+        "duration": 8
+      },
+      {
+        "name": "amr-maowad-signature.webp",
+        "transfer": 10310,
+        "duration": 6
+      }
+    ],
+    "overflow": false
+  },
+  "blog": {
+    "errors": [],
+    "failed": [],
+    "imgs": [
+      {
+        "src": "logo.webp",
+        "width": 493,
+        "height": 353,
+        "rect": [
+          52,
+          42
+        ]
+      },
+      {
+        "src": "logo.webp",
+        "width": 493,
+        "height": 353,
+        "rect": [
+          48,
+          39
+        ]
+      },
+      {
+        "src": "amr-maowad-signature.webp",
+        "width": 400,
+        "height": 163,
+        "rect": [
+          140,
+          50
+        ]
+      }
+    ],
+    "resources": [
+      {
+        "name": "logo.webp",
+        "transfer": 58942,
+        "duration": 19
+      },
+      {
+        "name": "bg_5.webp",
+        "transfer": 166088,
+        "duration": 29
+      },
+      {
+        "name": "image_1.webp",
+        "transfer": 62436,
+        "duration": 4
+      },
+      {
+        "name": "amr-maowad-signature.webp",
+        "transfer": 10310,
+        "duration": 9
+      }
+    ],
+    "overflow": false
+  },
+  "blog-single": {
+    "errors": [],
+    "failed": [],
+    "imgs": [
+      {
+        "src": "logo.webp",
+        "width": 493,
+        "height": 353,
+        "rect": [
+          372,
+          50
+        ]
+      },
+      {
+        "src": "logo.webp",
+        "width": 493,
+        "height": 353,
+        "rect": [
+          48,
+          39
+        ]
+      },
+      {
+        "src": "amr-maowad-signature.webp",
+        "width": 400,
+        "height": 163,
+        "rect": [
+          140,
+          50
+        ]
+      }
+    ],
+    "resources": [
+      {
+        "name": "logo.webp",
+        "transfer": 58942,
+        "duration": 20
+      },
+      {
+        "name": "bg_5.webp",
+        "transfer": 166088,
+        "duration": 4
+      },
+      {
+        "name": "amr-maowad-signature.webp",
+        "transfer": 10310,
+        "duration": 4
+      }
+    ],
+    "overflow": false
+  },
+  "cases": {
+    "errors": [],
+    "failed": [],
+    "imgs": [
+      {
+        "src": "logo.webp",
+        "width": 493,
+        "height": 353,
+        "rect": [
+          52,
+          42
+        ]
+      },
+      {
+        "src": "logo.webp",
+        "width": 493,
+        "height": 353,
+        "rect": [
+          48,
+          39
+        ]
+      },
+      {
+        "src": "amr-maowad-signature.webp",
+        "width": 400,
+        "height": 163,
+        "rect": [
+          140,
+          50
+        ]
+      }
+    ],
+    "resources": [
+      {
+        "name": "logo.webp",
+        "transfer": 58942,
+        "duration": 18
+      },
+      {
+        "name": "bg_5.webp",
+        "transfer": 166088,
+        "duration": 5
+      },
+      {
+        "name": "case-1.webp",
+        "transfer": 86512,
+        "duration": 6
+      },
+      {
+        "name": "case-2.webp",
+        "transfer": 66512,
+        "duration": 7
+      },
+      {
+        "name": "case-3.webp",
+        "transfer": 62608,
+        "duration": 6
+      },
+      {
+        "name": "case-5.webp",
+        "transfer": 75370,
+        "duration": 7
+      },
+      {
+        "name": "case-4.webp",
+        "transfer": 78962,
+        "duration": 8
+      },
+      {
+        "name": "case-6.webp",
+        "transfer": 61814,
+        "duration": 10
+      },
+      {
+        "name": "case-7.webp",
+        "transfer": 41140,
+        "duration": 10
+      },
+      {
+        "name": "case-8.webp",
+        "transfer": 79530,
+        "duration": 10
+      },
+      {
+        "name": "amr-maowad-signature.webp",
+        "transfer": 10310,
+        "duration": 9
+      }
+    ],
+    "overflow": false
+  },
+  "contact": {
+    "errors": [],
+    "failed": [],
+    "imgs": [
+      {
+        "src": "logo.webp",
+        "width": 493,
+        "height": 353,
+        "rect": [
+          52,
+          42
+        ]
+      },
+      {
+        "src": "logo.webp",
+        "width": 493,
+        "height": 353,
+        "rect": [
+          48,
+          39
+        ]
+      },
+      {
+        "src": "amr-maowad-signature.webp",
+        "width": 400,
+        "height": 163,
+        "rect": [
+          140,
+          50
+        ]
+      }
+    ],
+    "resources": [
+      {
+        "name": "logo.webp",
+        "transfer": 58942,
+        "duration": 19
+      },
+      {
+        "name": "bg_5.webp",
+        "transfer": 166088,
+        "duration": 26
+      },
+      {
+        "name": "amr-maowad-signature.webp",
+        "transfer": 10310,
+        "duration": 11
+      }
+    ],
+    "overflow": false
+  },
+  "practice-area": {
+    "errors": [],
+    "failed": [],
+    "imgs": [
+      {
+        "src": "logo.webp",
+        "width": 493,
+        "height": 353,
+        "rect": [
+          52,
+          42
+        ]
+      },
+      {
+        "src": "logo.webp",
+        "width": 493,
+        "height": 353,
+        "rect": [
+          48,
+          39
+        ]
+      },
+      {
+        "src": "amr-maowad-signature.webp",
+        "width": 400,
+        "height": 163,
+        "rect": [
+          140,
+          50
+        ]
+      }
+    ],
+    "resources": [
+      {
+        "name": "logo.webp",
+        "transfer": 58942,
+        "duration": 21
+      },
+      {
+        "name": "bg_5.webp",
+        "transfer": 166088,
+        "duration": 26
+      },
+      {
+        "name": "amr-maowad-signature.webp",
+        "transfer": 10310,
+        "duration": 8
+      }
+    ],
+    "overflow": false
+  }
+}

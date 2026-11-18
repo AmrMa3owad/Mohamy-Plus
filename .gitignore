@@ -368,3 +368,6 @@ FodyWeavers.xsd
 ._*
 Thumbs.db
 ehthumbs.db
+
+# Source image originals retained outside deployable assets
+/_originals/
