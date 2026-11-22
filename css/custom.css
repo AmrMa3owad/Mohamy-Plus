@@ -3914,7 +3914,7 @@ html, body {
 
 /* Nav brand logo sizing fix */
 .navbar-brand img {
-    max-height: 42px !important;
+    max-height: 56px !important;
     width: auto !important;
     margin-right: 10px !important;
 }
@@ -4094,7 +4094,7 @@ html, body {
 /* -- Subpages Full-Width Content Alignment -- */
 .hero-wrap.hero-wrap-2 .container,
 .ftco-section > .container {
-    max-width: 1200px !important;
+    max-width: 1440px !important;
 }
 
 .team-overview { background: #080b10; }
@@ -4256,4 +4256,86 @@ html, body {
 .dossier-matter {
     font-size: 0.65rem;
     letter-spacing: 1px;
+}
+
+
+/* Header branding size requested in the client revision. */
+.navbar-brand {
+    font-size: 1.5rem !important;
+}
+
+@media (max-width: 480px) {
+    .navbar-brand {
+        font-size: 1.3rem !important;
+    }
+
+    .navbar-brand img {
+        max-height: 36px !important;
+    }
+}
+
+/* Whole article cards retain the existing card treatment and show keyboard focus. */
+.article-glass-card {
+    color: inherit;
+    text-decoration: none;
+}
+
+.article-glass-card:focus-visible {
+    outline: 3px solid #dfceaa !important;
+    outline-offset: 4px !important;
+}
+
+.cx-view-all-insights {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: .65rem 1.25rem;
+    border: 1px solid rgba(203, 184, 140, .4);
+    border-radius: 999px;
+    text-decoration: none;
+}
+
+.cx-view-all-insights:focus-visible {
+    outline: 3px solid #dfceaa !important;
+    outline-offset: 3px !important;
+}
+
+/* Wide-screen composition: use the available canvas while keeping reading measures controlled. */
+.hero-wrap > .container,
+.futuristic-footer > .container,
+.footer-bottom-strip > .container {
+    max-width: 1600px !important;
+}
+
+.hero-wrap.hero-wrap-2 .slider-text .col-md-9 {
+    max-width: 46rem;
+    text-align: left;
+}
+
+.hero-wrap.hero-wrap-2 .breadcrumbs,
+.hero-wrap.hero-wrap-2 .bread {
+    text-align: left;
+}
+
+@media (min-width: 1200px) {
+    .hero-wrap > .container,
+    .futuristic-footer > .container,
+    .footer-bottom-strip > .container {
+        padding-right: clamp(2rem, 4vw, 4.5rem);
+        padding-left: clamp(2rem, 4vw, 4.5rem);
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero-wrap.hero-wrap-2 .slider-text .col-md-9,
+    .hero-wrap.hero-wrap-2 .breadcrumbs,
+    .hero-wrap.hero-wrap-2 .bread {
+        text-align: center;
+    }
+
+    .hero-wrap.hero-wrap-2 .slider-text .col-md-9 {
+        max-width: 100%;
+    }
 }
