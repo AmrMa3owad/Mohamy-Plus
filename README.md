@@ -32,6 +32,25 @@ Then rebuild (Node 18+):
 node src/build.mjs
 ```
 
+## Page addresses
+
+Each page is a folder with an `index.html`, so addresses have no `.html`:
+
+| Page | English | Arabic |
+|---|---|---|
+| Home | `/` | `/ar/` |
+| About | `/about/` | `/ar/about/` |
+| Practice areas | `/practice-areas/` | `/ar/practice-areas/` |
+| How we help | `/how-we-help/` | `/ar/how-we-help/` |
+| Insights | `/insights/` | `/ar/insights/` |
+| M&A article | `/insights/mergers-demergers-acquisitions/` | `/ar/insights/mergers-demergers-acquisitions/` |
+| Contact | `/contact/` | `/ar/contact/` |
+
+- **Works everywhere:** this needs no server rules, so it works on any static host.
+- **Old addresses still work:** links to `about.html`, `blog.html?q=…`, `practice-area.html#family` and the other old `.html` pages redirect automatically, keeping any search terms and `#section`.
+- **Adding or renaming a page:** change the `pages` table in `src/layout.mjs`. Every link, the language switch, Phoenix and the sitemap follow it.
+- **Previewing locally:** you can double-click `index.html` and browse normally. When a page is opened from disk (`file://`), the site sends folder links to their `index.html` automatically, so the address bar shows `…/about/index.html` there. To see the clean addresses exactly as on the live site, run `python -m http.server` in this folder and open `http://localhost:8000`.
+
 ## Before going live
 
 1. **Set the domain.** Put it in `site.url` in `src/config.mjs`, for example `https://mohamyplus.com`, then rebuild. This adds:

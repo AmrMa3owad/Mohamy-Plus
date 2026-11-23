@@ -2,7 +2,6 @@
 // Blocks: { h2, id } | { p } | { ul: [...] } | { dl: [[term, text], ...] }
 
 export const article = {
-  slug: 'blog-single.html',
   image: 'image_2',
   category: { en: 'Corporate & M&A', ar: 'الشركات والاستحواذ' },
   tags: [

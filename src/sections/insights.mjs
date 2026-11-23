@@ -12,7 +12,7 @@ export function articleCard(ctx, { featured = false } = {}) {
   </div>
   <div class="article-card__body">
     <p class="article-card__meta"><span>${icon('clock')}${minutes(ctx)}</span><span>${icon('doc')}${t('Practical guide', 'دليل عملي')}</span></p>
-    <h3 class="article-card__title"><a href="${article.slug}">${L(article.title)}</a></h3>
+    <h3 class="article-card__title"><a href="${ctx.href('article')}">${L(article.title)}</a></h3>
     <p class="article-card__summary">${L(featured ? article.subtitle : article.summary)}</p>
     <span class="link-arrow" aria-hidden="true">${t('Read Analysis', 'اقرأ التحليل')}${icon('arrow-right', 'icon--dir')}</span>
   </div>

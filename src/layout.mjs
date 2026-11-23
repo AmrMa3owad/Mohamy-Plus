@@ -5,17 +5,23 @@ import { practiceAreas } from './data.mjs';
 
 export const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/(\w:)/, '$1')), '..');
 
-// Page registry: key -> output file name (same name in /ar/).
+// Page registry: key -> clean URL path (a folder served by its index.html).
+// The same paths exist under /ar/. Old *.html addresses redirect here (see build.mjs).
 export const pages = {
-  home: 'index.html',
-  about: 'about.html',
-  practice: 'practice-area.html',
-  help: 'cases.html',
-  insights: 'blog.html',
-  article: 'blog-single.html',
-  contact: 'contact.html',
+  home: '',
+  about: 'about/',
+  practice: 'practice-areas/',
+  help: 'how-we-help/',
+  insights: 'insights/',
+  article: 'insights/mergers-demergers-acquisitions/',
+  contact: 'contact/',
   notfound: '404.html',
 };
+/** File the build writes for a page (relative to its language root). */
+export const outputFile = key => (key === 'notfound' ? pages.notfound : pages[key] + 'index.html');
+/** How many folders deep a page sits below the site root. */
+const depthOf = (lang, key) => (lang === 'ar' ? 1 : 0) + (key === 'notfound' ? 0 : pages[key].split('/').filter(Boolean).length);
+const orHere = p => p || './';
 
 const nav = [
   ['home', { en: 'Home', ar: 'الرئيسية' }],
@@ -36,15 +42,17 @@ export const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').r
 
 export function createContext(lang, key) {
   const isAr = lang === 'ar';
-  const base = isAr ? '../' : '';
+  const base = '../'.repeat(depthOf(lang, key));   // path back to the site root
+  const langRoot = base + (isAr ? 'ar/' : '');       // path to this language's home
   const usedIcons = new Set();
   const L = v => (v && typeof v === 'object' && 'en' in v ? (isAr ? v.ar : v.en) : v);
   const ctx = {
     lang, isAr, key, base, dir: isAr ? 'rtl' : 'ltr', L,
     t: (en, ar) => (isAr ? ar : en),
-    href: (k, hash = '') => pages[k] + hash,
+    langRoot: orHere(langRoot),
+    href: (k, hash = '') => orHere(langRoot + pages[k]) + hash,
     asset: p => base + p,
-    altHref: () => (isAr ? '../' : 'ar/') + (key === 'notfound' ? pages.home : pages[key]),
+    altHref: () => orHere(base + (isAr ? '' : 'ar/') + (key === 'notfound' ? pages.home : pages[key])),
     wa: (text) => `https://wa.me/${site.whatsapp}${text ? '?text=' + encodeURIComponent(text) : ''}`,
     icon(id, cls = '') {
       if (!symbols[id]) throw new Error('Unknown icon: ' + id);
@@ -65,14 +73,13 @@ export function createContext(lang, key) {
   return ctx;
 }
 
-const absolute = (lang, file) => site.url ? `${site.url}/${lang === 'ar' ? 'ar/' : ''}${file === 'index.html' ? '' : file}` : '';
+export const absolute = (lang, key) => site.url ? `${site.url}/${lang === 'ar' ? 'ar/' : ''}${pages[key]}` : '';
 
 function head(ctx, meta) {
   const { L, asset, lang, key } = ctx;
   const title = L(meta.title);
   const description = L(meta.description);
-  const file = pages[key];
-  const enUrl = absolute('en', file), arUrl = absolute('ar', file);
+  const enUrl = absolute('en', key), arUrl = absolute('ar', key);
   const selfUrl = lang === 'ar' ? arUrl : enUrl;
   const ogImage = site.url ? `${site.url}/images/og-image${lang === 'ar' ? '-ar' : ''}.jpg` : '';
   const ld = {
@@ -91,7 +98,7 @@ function head(ctx, meta) {
     ...(site.url ? { url: site.url + '/', logo: site.url + '/images/icon-512.png', image: ogImage } : {}),
   };
   // Runs before first paint: theme, JS flag, and remembered language.
-  const boot = `(function(){var d=document.documentElement,s=null;d.className+=' js';try{s=localStorage.getItem('mohamy-plus-theme')}catch(e){}d.setAttribute('data-theme',s==='light'||s==='dark'?s:(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'));${key === 'notfound' ? '' : `try{var p=localStorage.getItem('mohamy-plus-language');if(p&&p!==d.lang&&(p==='ar'||p==='en')&&!/[?&]lang=/.test(location.search)){d.style.visibility='hidden';location.replace(${JSON.stringify(ctx.altHref())}+location.hash)}}catch(e){}`}})();`;
+  const boot = `(function(){var d=document.documentElement,s=null;d.className+=' js';try{s=localStorage.getItem('mohamy-plus-theme')}catch(e){}d.setAttribute('data-theme',s==='light'||s==='dark'?s:(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'));${key === 'notfound' ? '' : `try{var p=localStorage.getItem('mohamy-plus-language');if(p&&p!==d.lang&&(p==='ar'||p==='en')&&!/[?&]lang=/.test(location.search)){d.style.visibility='hidden';var t=${JSON.stringify(ctx.altHref())};if(location.protocol==='file:'&&t.slice(-1)==='/')t+='index.html';location.replace(t+location.hash)}}catch(e){}`}})();`;
   return `<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -278,7 +285,7 @@ export function sectionHead(ctx, { kicker, title, lead, align = 'center', id }) 
 /** Phoenix assistant launcher. The panel itself is built by js/phoenix.js on first open. */
 function phoenix(ctx) {
   const { t, asset, lang } = ctx;
-  return `<div class="phx-root" data-phoenix data-wa="${site.whatsapp}" data-src="${asset('js/phoenix.js')}?v=${ctx.version}" data-data="${asset(`js/phoenix-data.${lang}.js`)}?v=${ctx.version}">
+  return `<div class="phx-root" data-phoenix data-wa="${site.whatsapp}" data-root="${ctx.langRoot}" data-src="${asset('js/phoenix.js')}?v=${ctx.version}" data-data="${asset(`js/phoenix-data.${lang}.js`)}?v=${ctx.version}">
   <div class="phx-teaser" hidden>
     <p>${t('Hi, I’m <strong>Phoenix</strong>. Need help finding your way or booking a consultation?', 'مرحبًا، أنا <strong>فينيكس</strong>. هل تحتاج إلى مساعدة في التنقل أو حجز استشارة؟')}</p>
     <button type="button" class="phx-teaser__close" data-phx-dismiss aria-label="${t('Dismiss', 'إخفاء')}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>

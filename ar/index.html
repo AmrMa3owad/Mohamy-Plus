@@ -8,10 +8,10 @@
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0a0c0f" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f6f2ea" media="(prefers-color-scheme: light)">
-<script>(function(){var d=document.documentElement,s=null;d.className+=' js';try{s=localStorage.getItem('mohamy-plus-theme')}catch(e){}d.setAttribute('data-theme',s==='light'||s==='dark'?s:(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'));try{var p=localStorage.getItem('mohamy-plus-language');if(p&&p!==d.lang&&(p==='ar'||p==='en')&&!/[?&]lang=/.test(location.search)){d.style.visibility='hidden';location.replace("../index.html"+location.hash)}}catch(e){}})();</script>
+<script>(function(){var d=document.documentElement,s=null;d.className+=' js';try{s=localStorage.getItem('mohamy-plus-theme')}catch(e){}d.setAttribute('data-theme',s==='light'||s==='dark'?s:(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'));try{var p=localStorage.getItem('mohamy-plus-language');if(p&&p!==d.lang&&(p==='ar'||p==='en')&&!/[?&]lang=/.test(location.search)){d.style.visibility='hidden';var t="../";if(location.protocol==='file:'&&t.slice(-1)==='/')t+='index.html';location.replace(t+location.hash)}}catch(e){}})();</script>
 <link rel="preload" href="../fonts/plex-arabic/IBMPlexSansArabic-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/brand/ElMessiri-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../css/site.css?v=59c081484dcee2c8">
+<link rel="stylesheet" href="../css/site.css?v=59c08148bed4b392">
 <link rel="icon" href="../favicon.ico" sizes="48x48">
 <link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
@@ -46,7 +46,7 @@
 </aside>
 <header class="site-header" id="site-header">
   <div class="container site-header__inner">
-    <a class="brand" href="index.html" aria-label="محامي بلس — الصفحة الرئيسية">
+    <a class="brand" href="../ar/" aria-label="محامي بلس — الصفحة الرئيسية">
       <img class="brand__logo" src="../images/logo.webp" width="493" height="353" alt="" decoding="async">
       <span class="brand__text">
         <span class="brand__name">محامي <em>بلس</em></span>
@@ -55,12 +55,12 @@
     </a>
     <nav class="primary-nav" id="primary-nav" aria-label="القائمة الرئيسية">
       <ul class="primary-nav__list">
-        <li><a href="index.html" aria-current="page">الرئيسية</a></li>
-        <li><a href="about.html">من نحن</a></li>
-        <li><a href="practice-area.html">مجالات الممارسة</a></li>
-        <li><a href="cases.html">كيف نساعدك</a></li>
-        <li><a href="blog.html">رؤى قانونية</a></li>
-        <li><a href="contact.html">تواصل معنا</a></li>
+        <li><a href="../ar/" aria-current="page">الرئيسية</a></li>
+        <li><a href="../ar/about/">من نحن</a></li>
+        <li><a href="../ar/practice-areas/">مجالات الممارسة</a></li>
+        <li><a href="../ar/how-we-help/">كيف نساعدك</a></li>
+        <li><a href="../ar/insights/">رؤى قانونية</a></li>
+        <li><a href="../ar/contact/">تواصل معنا</a></li>
       </ul>
       <div class="primary-nav__extra">
         <a class="btn btn--gold btn--block" href="https://wa.me/201080509733" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-whatsapp"></use></svg><span>احجز استشارة</span></a>
@@ -69,7 +69,7 @@
       </div>
     </nav>
     <div class="site-header__tools">
-      <a class="tool-btn lang-switch" href="../index.html" hreflang="en" lang="en" data-lang-switch="en" aria-label="View this page in English"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-translate"></use></svg><span>English</span></a>
+      <a class="tool-btn lang-switch" href="../" hreflang="en" lang="en" data-lang-switch="en" aria-label="View this page in English"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-translate"></use></svg><span>English</span></a>
       <button class="tool-btn theme-toggle" type="button" data-theme-toggle aria-label="تبديل المظهر">
         <svg class="icon theme-toggle__sun" aria-hidden="true" focusable="false"><use href="#i-sun"></use></svg><svg class="icon theme-toggle__moon" aria-hidden="true" focusable="false"><use href="#i-moon"></use></svg>
       </button>
@@ -91,7 +91,7 @@
     <p class="hero__lead">نصل الأفراد ورواد الأعمال والمستثمرين والشركات بخبرة قانونية موثوقة وتوجيه استراتيجي وحلول قانونية مصممة خصيصًا، عبر مجالات ممارسة متنوعة.</p>
     <div class="hero__actions">
       <a class="btn btn--gold btn--lg" href="https://wa.me/201080509733" target="_blank" rel="noopener"><span>احجز استشارة</span><svg class="icon icon--dir" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></a>
-      <a class="btn btn--glass btn--lg" href="practice-area.html"><span>استكشف مجالات الممارسة</span><svg class="icon icon--dir" aria-hidden="true" focusable="false"><use href="#i-chevron"></use></svg></a>
+      <a class="btn btn--glass btn--lg" href="../ar/practice-areas/"><span>استكشف مجالات الممارسة</span><svg class="icon icon--dir" aria-hidden="true" focusable="false"><use href="#i-chevron"></use></svg></a>
     </div>
   </div>
   <a class="hero__scroll" href="#intro" aria-label="انتقل إلى المحتوى"><span class="hero__mouse" aria-hidden="true"></span><span>استكشف</span></a>
@@ -186,55 +186,55 @@
 </header>
     <ul class="area-list">
       <li class="reveal" style="--i:0">
-        <a class="area-item" href="practice-area.html#corporate">
+        <a class="area-item" href="../ar/practice-areas/#corporate">
           <span class="area-item__head"><span class="icon-badge icon-badge--sm"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-briefcase"></use></svg></span><h3>قانون الشركات والقانون التجاري</h3><svg class="icon area-item__arrow icon--dir" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></span>
           <p>تأسيس الشركات والحوكمة المؤسسية والعقود التجارية والامتثال التنظيمي، بما يلائم احتياجات الأعمال.</p>
         </a>
       </li>
       <li class="reveal" style="--i:1">
-        <a class="area-item" href="practice-area.html#family">
+        <a class="area-item" href="../ar/practice-areas/#family">
           <span class="area-item__head"><span class="icon-badge icon-badge--sm"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-family"></use></svg></span><h3>قانون الأسرة</h3><svg class="icon area-item__arrow icon--dir" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></span>
           <p>المساعدة القانونية في الطلاق والحضانة والنفقة والميراث وسائر المسائل الأسرية.</p>
         </a>
       </li>
       <li class="reveal" style="--i:0">
-        <a class="area-item" href="practice-area.html#criminal">
+        <a class="area-item" href="../ar/practice-areas/#criminal">
           <span class="area-item__head"><span class="icon-badge icon-badge--sm"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-handcuffs"></use></svg></span><h3>القانون الجنائي</h3><svg class="icon area-item__arrow icon--dir" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></span>
           <p>الدفاع والتمثيل القانوني في التحقيقات والإجراءات الجنائية والمسائل المتصلة بها.</p>
         </a>
       </li>
       <li class="reveal" style="--i:1">
-        <a class="area-item" href="practice-area.html#real-estate">
+        <a class="area-item" href="../ar/practice-areas/#real-estate">
           <span class="area-item__head"><span class="icon-badge icon-badge--sm"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-house"></use></svg></span><h3>القانون العقاري</h3><svg class="icon area-item__arrow icon--dir" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></span>
           <p>المعاملات العقارية ومنازعات الملكية والعقود العقارية والإجراءات القانونية المتصلة بها.</p>
         </a>
       </li>
       <li class="reveal" style="--i:0">
-        <a class="area-item" href="practice-area.html#employment">
+        <a class="area-item" href="../ar/practice-areas/#employment">
           <span class="area-item__head"><span class="icon-badge icon-badge--sm"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-workspace"></use></svg></span><h3>قانون العمل</h3><svg class="icon area-item__arrow icon--dir" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></span>
           <p>عقود العمل ومنازعات بيئة العمل ومسائل إنهاء الخدمة والامتثال لقانون العمل.</p>
         </a>
       </li>
       <li class="reveal" style="--i:1">
-        <a class="area-item" href="practice-area.html#civil">
+        <a class="area-item" href="../ar/practice-areas/#civil">
           <span class="area-item__head"><span class="icon-badge icon-badge--sm"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-gavel"></use></svg></span><h3>القانون المدني والتقاضي</h3><svg class="icon area-item__arrow icon--dir" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></span>
           <p>المنازعات المدنية والمطالبات التعاقدية ودعاوى التعويض والتمثيل القانوني أمام المحاكم.</p>
         </a>
       </li>
       <li class="reveal" style="--i:0">
-        <a class="area-item" href="practice-area.html#capital-markets">
+        <a class="area-item" href="../ar/practice-areas/#capital-markets">
           <span class="area-item__head"><span class="icon-badge icon-badge--sm"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chart"></use></svg></span><h3>أسواق المال</h3><svg class="icon area-item__arrow icon--dir" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></span>
           <p>الاستشارات القانونية في معاملات الأوراق المالية ولوائح سوق المال ومتطلبات الامتثال.</p>
         </a>
       </li>
       <li class="reveal" style="--i:1">
-        <a class="area-item" href="practice-area.html#mergers-acquisitions">
+        <a class="area-item" href="../ar/practice-areas/#mergers-acquisitions">
           <span class="area-item__head"><span class="icon-badge icon-badge--sm"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-diagram"></use></svg></span><h3>الاندماج والاستحواذ</h3><svg class="icon area-item__arrow icon--dir" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></span>
           <p>الفحص القانوني النافي للجهالة وهيكلة الصفقات والاستحواذ على الشركات وإعادة الهيكلة.</p>
         </a>
       </li>
       <li class="reveal" style="--i:0">
-        <a class="area-item" href="practice-area.html#arbitration">
+        <a class="area-item" href="../ar/practice-areas/#arbitration">
           <span class="area-item__head"><span class="icon-badge icon-badge--sm"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-scale"></use></svg></span><h3>التحكيم وتسوية المنازعات</h3><svg class="icon area-item__arrow icon--dir" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></span>
           <p>التحكيم والتفاوض والوسائل البديلة لتسوية المنازعات التجارية والمدنية.</p>
         </a>
@@ -418,7 +418,7 @@
   </div>
   <div class="article-card__body">
     <p class="article-card__meta"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-clock"></use></svg>4 دقائق قراءة</span><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-doc"></use></svg>دليل عملي</span></p>
-    <h3 class="article-card__title"><a href="blog-single.html">الاندماج والتقسيم والاستحواذ في القانون المصري</a></h3>
+    <h3 class="article-card__title"><a href="../ar/insights/mergers-demergers-acquisitions/">الاندماج والتقسيم والاستحواذ في القانون المصري</a></h3>
     <p class="article-card__summary">دليل عملي للفروق الجوهرية بين ثلاث آليات قانونية مستقلة، ونظام الرقابة المسبقة الذي بات يسري على الصفقات الكبرى.</p>
     <span class="link-arrow" aria-hidden="true">اقرأ التحليل<svg class="icon icon--dir" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></span>
   </div>
@@ -427,10 +427,10 @@
     <span class="icon-badge"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chat"></use></svg></span>
     <h3>لديك سؤال حول وضعك؟</h3>
     <p>تقدّم نشراتنا معلومات عامة. وللحصول على إرشاد بشأن مسألتك، شارك الفريق ملخصًا قصيرًا وسنساعدك على تحديد الخطوة المناسبة.</p>
-    <a class="btn btn--outline" href="index.html#consultation"><span>اطلب استشارة</span><svg class="icon icon--dir" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></a>
+    <a class="btn btn--outline" href="../ar/#consultation"><span>اطلب استشارة</span><svg class="icon icon--dir" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></a>
   </div>
 </div>
-    <p class="center-link reveal"><a class="btn btn--outline" href="blog.html"><span>عرض جميع الرؤى</span><svg class="icon icon--dir" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></a></p>
+    <p class="center-link reveal"><a class="btn btn--outline" href="../ar/insights/"><span>عرض جميع الرؤى</span><svg class="icon icon--dir" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></a></p>
   </div>
 </section>
 
@@ -449,7 +449,7 @@
 
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="brand" href="index.html">
+        <a class="brand" href="../ar/">
           <img class="brand__logo" src="../images/logo.webp" width="493" height="353" alt="" decoding="async" loading="lazy">
       <span class="brand__text">
         <span class="brand__name">محامي <em>بلس</em></span>
@@ -468,22 +468,22 @@
       <nav class="footer-col" aria-label="روابط التذييل">
         <h2 class="footer-col__title">التنقل</h2>
         <ul>
-          <li><a href="index.html">الرئيسية</a></li>
-          <li><a href="about.html">من نحن</a></li>
-          <li><a href="practice-area.html">مجالات الممارسة</a></li>
-          <li><a href="cases.html">كيف نساعدك</a></li>
-          <li><a href="blog.html">رؤى قانونية</a></li>
-          <li><a href="contact.html">تواصل معنا</a></li>
+          <li><a href="../ar/">الرئيسية</a></li>
+          <li><a href="../ar/about/">من نحن</a></li>
+          <li><a href="../ar/practice-areas/">مجالات الممارسة</a></li>
+          <li><a href="../ar/how-we-help/">كيف نساعدك</a></li>
+          <li><a href="../ar/insights/">رؤى قانونية</a></li>
+          <li><a href="../ar/contact/">تواصل معنا</a></li>
         </ul>
       </nav>
       <div class="footer-col">
         <h2 class="footer-col__title">الخبرات</h2>
         <ul>
-          <li><a href="practice-area.html#corporate">قانون الشركات والقانون التجاري</a></li>
-          <li><a href="practice-area.html#mergers-acquisitions">الاندماج والاستحواذ</a></li>
-          <li><a href="practice-area.html#capital-markets">أسواق المال</a></li>
-          <li><a href="practice-area.html#arbitration">التحكيم وتسوية المنازعات</a></li>
-          <li><a href="practice-area.html#criminal">القانون الجنائي</a></li>
+          <li><a href="../ar/practice-areas/#corporate">قانون الشركات والقانون التجاري</a></li>
+          <li><a href="../ar/practice-areas/#mergers-acquisitions">الاندماج والاستحواذ</a></li>
+          <li><a href="../ar/practice-areas/#capital-markets">أسواق المال</a></li>
+          <li><a href="../ar/practice-areas/#arbitration">التحكيم وتسوية المنازعات</a></li>
+          <li><a href="../ar/practice-areas/#criminal">القانون الجنائي</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -503,7 +503,7 @@
     </div>
   </div>
 </footer>
-<div class="phx-root" data-phoenix data-wa="201080509733" data-src="../js/phoenix.js?v=59c081484dcee2c8" data-data="../js/phoenix-data.ar.js?v=59c081484dcee2c8">
+<div class="phx-root" data-phoenix data-wa="201080509733" data-root="../ar/" data-src="../js/phoenix.js?v=59c08148bed4b392" data-data="../js/phoenix-data.ar.js?v=59c08148bed4b392">
   <div class="phx-teaser" hidden>
     <p>مرحبًا، أنا <strong>فينيكس</strong>. هل تحتاج إلى مساعدة في التنقل أو حجز استشارة؟</p>
     <button type="button" class="phx-teaser__close" data-phx-dismiss aria-label="إخفاء"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
@@ -546,6 +546,6 @@
     <span class="phx-launcher__label" aria-hidden="true">اسأل فينيكس</span>
   </button>
 </div>
-<script src="../js/site.js?v=59c081484dcee2c8" defer></script>
+<script src="../js/site.js?v=59c08148bed4b392" defer></script>
 </body>
 </html>

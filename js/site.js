@@ -406,7 +406,20 @@
     if (teaser && !session.get(SEEN)) setTimeout(() => { if (!window.Phoenix || !window.Phoenix.isOpen()) teaser.hidden = false; }, 9000);
   }
 
+  /* ---------- Local preview from disk (file://) ----------
+     Pages are folders (about/, insights/…). Web hosts serve their index.html automatically,
+     but a browser opening files from disk shows a folder listing instead. When running
+     from file://, point folder links straight at index.html. On a real host nothing changes. */
+  function initFilePreview() {
+    if (location.protocol !== 'file:') return;
+    const folder = /^(?![a-z][a-z0-9+.-]*:|\/\/)([^?#]*\/)([?#].*)?$/i;
+    const fix = (value) => value.replace(folder, (_, path, rest) => path + 'index.html' + (rest || ''));
+    $$('a[href]').forEach((a) => { const v = a.getAttribute('href'); if (folder.test(v)) a.setAttribute('href', fix(v)); });
+    $$('form[action]').forEach((f) => { const v = f.getAttribute('action'); if (folder.test(v)) f.setAttribute('action', fix(v)); });
+  }
+
   function init() {
+    initFilePreview();
     initTheme();
     initLanguage();
     initHeader();

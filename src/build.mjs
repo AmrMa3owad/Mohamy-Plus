@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { site } from './config.mjs';
-import { ROOT, pages, createContext, renderPage } from './layout.mjs';
+import { ROOT, pages, outputFile, absolute, createContext, renderPage } from './layout.mjs';
 import { phoenixData } from './phoenix/knowledge.mjs';
 
 const modules = {
@@ -42,13 +42,21 @@ for (const lang of ['en', 'ar']) {
     ctx.version = version;
     let html = renderPage(ctx, mod.meta, mod.render(ctx));
     if (key === 'notfound' && site.url) html = html.replace('<head>', `<head>\n<base href="${site.url}/">`);
-    written.push(write((lang === 'ar' ? 'ar/' : '') + pages[key], html));
+    written.push(write((lang === 'ar' ? 'ar/' : '') + outputFile(key), html));
   }
 }
 
-// Old "Legal Approach" page now lives on How We Help.
-for (const [rel, target] of [['attorney.html', 'cases.html'], ['ar/attorney.html', 'cases.html']]) {
-  written.push(write(rel, `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Moved</title><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=${target}"><link rel="canonical" href="${target}"></head><body><p><a href="${target}">This page has moved.</a></p></body></html>\n`));
+// Old *.html addresses keep working: each becomes a tiny redirect to its clean URL,
+// carrying over any ?query (insights search) and #section.
+const legacy = {
+  'about.html': 'about', 'practice-area.html': 'practice', 'cases.html': 'help', 'attorney.html': 'help',
+  'blog.html': 'insights', 'blog-single.html': 'article', 'contact.html': 'contact',
+};
+const redirect = (target, lang) => `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><title>Moved</title><meta name="robots" content="noindex"><link rel="canonical" href="${target}"><script>var t=${JSON.stringify(target)};if(location.protocol==='file:'&&t.slice(-1)==='/')t+='index.html';location.replace(t+location.search+location.hash)</script><meta http-equiv="refresh" content="0; url=${target}"></head><body><p><a href="${target}">This page has moved.</a></p></body></html>\n`;
+for (const lang of ['en', 'ar']) {
+  for (const [old, key] of Object.entries(legacy)) {
+    written.push(write((lang === 'ar' ? 'ar/' : '') + old, redirect(absolute(lang, key) || pages[key], lang)));
+  }
 }
 
 written.push(write('site.webmanifest', JSON.stringify({
@@ -60,8 +68,8 @@ written.push(write('site.webmanifest', JSON.stringify({
 written.push(write('robots.txt', `User-agent: *\nAllow: /\nDisallow: /src/\n${site.url ? `\nSitemap: ${site.url}/sitemap.xml\n` : ''}`));
 
 if (site.url) {
-  const urls = Object.entries(pages).filter(([k]) => k !== 'notfound').map(([, f]) => {
-    const en = `${site.url}/${f === 'index.html' ? '' : f}`, ar = `${site.url}/ar/${f === 'index.html' ? '' : f}`;
+  const urls = Object.keys(pages).filter(k => k !== 'notfound').map(k => {
+    const en = absolute('en', k), ar = absolute('ar', k);
     const alt = `<xhtml:link rel="alternate" hreflang="en" href="${en}"/><xhtml:link rel="alternate" hreflang="ar" href="${ar}"/>`;
     return `<url><loc>${en}</loc>${alt}</url><url><loc>${ar}</loc>${alt}</url>`;
   });

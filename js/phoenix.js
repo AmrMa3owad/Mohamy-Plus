@@ -150,12 +150,14 @@
   const setPlaceholder = (flowInput) => { input.placeholder = flowInput ? D.ui.placeholderInput : D.ui.placeholder; };
 
   /* ---------------- Navigation ---------------- */
-  const currentFile = () => (location.pathname.split('/').pop() || 'index.html');
+  // Pages are clean folder URLs (about/, insights/…) resolved from this language's root.
+  const langRoot = new URL(root.dataset.root || './', location.href);
+  const samePath = (a, b) => a.replace(/index\.html$/, '') === b.replace(/index\.html$/, '');
   function go(target) {
     const [key, hash] = target.split('#');
-    const file = D.pages[key];
-    if (!file) return;
-    if (file === currentFile()) {
+    if (!(key in D.pages)) return;
+    const url = new URL(D.pages[key], langRoot);
+    if (samePath(url.pathname, location.pathname)) {
       const el = hash && document.getElementById(hash);
       if (el) { el.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'start' }); history.replaceState(null, '', '#' + hash); }
       else window.scrollTo({ top: 0, behavior: reduced() ? 'auto' : 'smooth' });
@@ -164,7 +166,9 @@
     }
     state.open = !mobile();
     save();
-    location.href = file + (hash ? '#' + hash : '');
+    url.hash = hash || '';
+    if (location.protocol === 'file:' && url.pathname.endsWith('/')) url.pathname += 'index.html'; // opened from disk
+    location.href = url.href;
   }
 
   /* ---------------- WhatsApp ---------------- */
