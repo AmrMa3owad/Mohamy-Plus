@@ -58,6 +58,22 @@ node src/build.mjs
 - the particles and tilt effects, which pause off-screen and run only for mouse users;
 - the article's table of contents, reading progress bar and share links.
 
+## Phoenix (فينيكس) — the site assistant
+
+Phoenix is the assistant in the bottom corner of every page. It's rule-based and private: there's no AI service, no server and no data storage. Its code downloads only when a visitor opens it.
+
+- **What it does:** it answers common questions in Arabic and English (including Egyptian phrasing like «بكام» and «فين»), takes visitors to pages and practice areas, and guides them through a consultation request.
+- **How requests are sent:** it opens WhatsApp with a ready-made draft. The visitor reviews it and presses Send there; nothing is sent automatically.
+- **Guardrails:**
+  - It never gives legal advice. Questions like "will I win?" get a fixed redirect to the team.
+  - It never quotes fees, hours or outcomes.
+  - It reminds visitors not to share sensitive details.
+- **Editing Phoenix:**
+  - Everything it says lives in `src/phoenix/knowledge.mjs`: replies, buttons, keywords and the booking questions. The practice-area answers come from `src/data.mjs`, so they always match the site.
+  - Rebuilding generates `js/phoenix-data.en.js` and `js/phoenix-data.ar.js`. Don't edit those by hand.
+  - The engine is in `js/phoenix.js`, the logo in `images/phoenix.svg`, and the styles in the "Phoenix" section of `css/site.css`.
+- **Adding a topic:** add an entry to `intents` with its keywords in both languages, a `reply`, and any `buttons`.
+
 ## Asset tools (only needed when assets change)
 
 ```sh

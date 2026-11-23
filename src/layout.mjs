@@ -28,6 +28,8 @@ const nav = [
 
 const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'images/opt/manifest.json'), 'utf8'));
 const spriteSrc = fs.readFileSync(path.join(ROOT, 'images/icons.svg'), 'utf8');
+const phoenixSvg = fs.readFileSync(path.join(ROOT, 'images/phoenix.svg'), 'utf8')
+  .replace(/<!--[\s\S]*?-->/g, '').replace(/\s+role="img"|\s+aria-label="[^"]*"/g, '').replace('<svg ', '<svg aria-hidden="true" focusable="false" ').trim();
 const symbols = Object.fromEntries([...spriteSrc.matchAll(/<symbol id="i-([^"]+)"[\s\S]*?<\/symbol>/g)].map(m => [m[1], m[0]]));
 
 export const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -273,6 +275,22 @@ export function sectionHead(ctx, { kicker, title, lead, align = 'center', id }) 
 </header>`;
 }
 
+/** Phoenix assistant launcher. The panel itself is built by js/phoenix.js on first open. */
+function phoenix(ctx) {
+  const { t, asset, lang } = ctx;
+  return `<div class="phx-root" data-phoenix data-wa="${site.whatsapp}" data-src="${asset('js/phoenix.js')}?v=${ctx.version}" data-data="${asset(`js/phoenix-data.${lang}.js`)}?v=${ctx.version}">
+  <div class="phx-teaser" hidden>
+    <p>${t('Hi, I’m <strong>Phoenix</strong>. Need help finding your way or booking a consultation?', 'مرحبًا، أنا <strong>فينيكس</strong>. هل تحتاج إلى مساعدة في التنقل أو حجز استشارة؟')}</p>
+    <button type="button" class="phx-teaser__close" data-phx-dismiss aria-label="${t('Dismiss', 'إخفاء')}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+  <button class="phx-launcher" type="button" aria-expanded="false" aria-controls="phx-panel" aria-label="${t('Open the Phoenix assistant', 'افتح مساعد فينيكس')}">
+    <span class="phx-launcher__ring" aria-hidden="true"></span>
+    <span class="phx-mark">${phoenixSvg}</span>
+    <span class="phx-launcher__label" aria-hidden="true">${t('Ask Phoenix', 'اسأل فينيكس')}</span>
+  </button>
+</div>`;
+}
+
 export function renderPage(ctx, meta, main) {
   const { lang, dir, t, asset } = ctx;
   const body = `${topbar(ctx)}
@@ -281,6 +299,7 @@ ${header(ctx)}
 ${main}
 </main>
 ${footer(ctx)}
+${phoenix(ctx)}
 <script src="${asset('js/site.js')}?v=${ctx.version}" defer></script>`;
   return `<!doctype html>
 <html lang="${lang}" dir="${dir}" data-page="${ctx.key}">

@@ -367,6 +367,45 @@
     }
   }
 
+  /* ---------- Phoenix assistant (loaded on demand) ---------- */
+  function initPhoenix() {
+    const root = $('[data-phoenix]');
+    if (!root) return;
+    const launcher = $('.phx-launcher', root);
+    const teaser = $('.phx-teaser', root);
+    const SEEN = 'mohamy-plus-phoenix-teaser';
+    let loading = null;
+    const session = { get(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { sessionStorage.setItem(k, v); } catch (e) { /* noop */ } } };
+    const inject = (src) => new Promise((resolve, reject) => { const s = document.createElement('script'); s.src = src; s.onload = resolve; s.onerror = reject; document.body.appendChild(s); });
+    const load = () => {
+      if (!loading) loading = inject(root.dataset.data).then(() => inject(root.dataset.src)).catch(() => { loading = null; window.open(`https://wa.me/${root.dataset.wa}`, '_blank', 'noopener'); });
+      return loading;
+    };
+    const hideTeaser = () => { if (teaser && !teaser.hidden) { teaser.hidden = true; session.set(SEEN, '1'); } };
+    // The first click opens the assistant once its script has loaded; later clicks are handled by phoenix.js itself.
+    const onFirstClick = () => {
+      launcher.removeEventListener('click', onFirstClick);
+      hideTeaser();
+      launcher.classList.add('is-loading');
+      load().then(() => { launcher.classList.remove('is-loading'); if (window.Phoenix && !window.Phoenix.isOpen()) window.Phoenix.open(); });
+    };
+    launcher.addEventListener('click', onFirstClick);
+    ['pointerenter', 'focus'].forEach((ev) => launcher.addEventListener(ev, load, { once: true }));
+    if (teaser) {
+      $('[data-phx-dismiss]', teaser).addEventListener('click', hideTeaser);
+      teaser.addEventListener('click', (e) => { if (!e.target.closest('[data-phx-dismiss]')) launcher.click(); });
+    }
+    let saved = null;
+    try { saved = JSON.parse(sessionStorage.getItem('mohamy-plus-phoenix')); } catch (e) { /* noop */ }
+    if (saved && saved.lang === doc.lang && (saved.open || (saved.log && saved.log.length))) {
+      // Continue an ongoing conversation on this page.
+      launcher.removeEventListener('click', onFirstClick);
+      load();
+      return;
+    }
+    if (teaser && !session.get(SEEN)) setTimeout(() => { if (!window.Phoenix || !window.Phoenix.isOpen()) teaser.hidden = false; }, 9000);
+  }
+
   function init() {
     initTheme();
     initLanguage();
@@ -379,6 +418,7 @@
     initParticles();
     initTilt();
     initArticle();
+    initPhoenix();
     $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
   }
 

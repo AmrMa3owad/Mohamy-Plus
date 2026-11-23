@@ -5,6 +5,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { site } from './config.mjs';
 import { ROOT, pages, createContext, renderPage } from './layout.mjs';
+import { phoenixData } from './phoenix/knowledge.mjs';
 
 const modules = {
   home: await import('./pages/home.mjs'),
@@ -19,7 +20,14 @@ const modules = {
 
 // Hash with normalised line endings so Windows (CRLF) and Unix (LF) checkouts build identically.
 const hash = f => crypto.createHash('sha1').update(fs.readFileSync(path.join(ROOT, f), 'utf8').replace(/\r\n/g, '\n')).digest('hex').slice(0, 8);
-const version = hash('css/site.css') + hash('js/site.js').slice(0, 4);
+// Phoenix knowledge files are generated first so they are part of the asset version.
+const written = [];
+for (const lang of ['en', 'ar']) {
+  const rel = `js/phoenix-data.${lang}.js`;
+  fs.writeFileSync(path.join(ROOT, rel), phoenixData(lang));
+  written.push(rel);
+}
+const version = hash('css/site.css') + hash('js/site.js').slice(0, 4) + hash('js/phoenix.js').slice(0, 2) + hash('js/phoenix-data.en.js').slice(0, 2);
 const write = (rel, content) => {
   const out = path.join(ROOT, rel);
   fs.mkdirSync(path.dirname(out), { recursive: true });
@@ -27,7 +35,6 @@ const write = (rel, content) => {
   return rel;
 };
 
-const written = [];
 for (const lang of ['en', 'ar']) {
   for (const [key, mod] of Object.entries(modules)) {
     if (key === 'notfound' && lang === 'ar') continue; // hosts serve a single root 404.html
