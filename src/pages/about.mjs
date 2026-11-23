@@ -16,7 +16,7 @@ ${pageHero(ctx, { title: { en: 'About Mohamy Plus', ar: 'عن محامي بلس'
 
 <section class="section" aria-labelledby="story-title">
   <div class="container split">
-    <figure class="split__media reveal">
+    <figure class="split__media scan-media reveal">
       ${pic('about-1', { alt: t('Statue of Lady Justice in a law office', 'تمثال سيدة العدالة في مكتب محاماة'), sizes: '(min-width: 992px) 45vw, 100vw' })}
       <figcaption class="media-caption">${icon('shield-check')}<span><strong>${t('Discretion', 'التكتم')}</strong><small>${t('In every interaction', 'في كل تعامل')}</small></span></figcaption>
     </figure>

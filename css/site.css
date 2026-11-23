@@ -16,6 +16,10 @@
 @font-face { font-family: "IBM Plex Sans Arabic"; src: url("../fonts/plex-arabic/IBMPlexSansArabic-600.woff2") format("woff2"); font-weight: 600; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC; }
 @font-face { font-family: "IBM Plex Sans Arabic"; src: url("../fonts/plex-arabic/IBMPlexSansArabic-700.woff2") format("woff2"); font-weight: 700 900; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC; }
 
+/* Brand wordmark faces — subset (A–Z / basic Arabic), ~10 KB each. */
+@font-face { font-family: "Cinzel"; src: url("../fonts/brand/Cinzel-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "El Messiri"; src: url("../fonts/brand/ElMessiri-700.woff2") format("woff2"); font-weight: 700; font-display: swap; unicode-range: U+0600-06FF, U+200C-200D; }
+
 /* ---------- Tokens ---------- */
 :root {
   --font: "Inter", "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -23,7 +27,7 @@
   --ease: cubic-bezier(.2, .7, .2, 1);
   --radius-sm: 10px; --radius: 16px; --radius-lg: 22px; --radius-xl: 28px;
   --gutter: clamp(16px, 4vw, 40px);
-  --header-h: 76px;
+  --header-h: 88px;
   --gold-1: #ecdcb4; --gold-2: #c9a96e;
 }
 
@@ -241,10 +245,19 @@ body.menu-open .site-header::before { background: var(--bg); }
 .site-header.is-scrolled { box-shadow: var(--shadow-sm); }
 .site-header.is-hidden { transform: translateY(-100%); }
 .site-header__inner { display: flex; align-items: center; gap: 1rem; height: var(--header-h); }
-.brand { display: inline-flex; align-items: center; gap: .75rem; flex: none; }
-.brand__logo { height: 40px; width: auto; filter: var(--logo-filter); transition: filter .35s; }
-.brand__name { font-size: 1.2rem; font-weight: 700; letter-spacing: .02em; white-space: nowrap; }
-html[lang="ar"] .brand__name { letter-spacing: 0; font-size: 1.25rem; }
+/* Brand lockup: logo + Cinzel (EN) / El Messiri (AR) wordmark, last word in gold + tagline. */
+.brand { display: inline-flex; align-items: center; gap: .9rem; flex: none; }
+.brand__logo { height: 58px; width: auto; filter: var(--logo-filter) drop-shadow(0 6px 16px rgba(216, 195, 148, .18)); transition: filter .35s, transform .6s var(--ease); }
+.brand:hover .brand__logo { transform: rotate(-5deg) scale(1.05); }
+.brand__text { display: grid; gap: .4rem; line-height: 1; }
+.brand__name { font-family: "Cinzel", "Inter", Georgia, serif; font-size: 1.62rem; font-weight: 700; line-height: 1; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; color: var(--text); }
+.brand__name em { background: var(--em); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.brand__tag { display: flex; align-items: center; gap: .55rem; color: var(--muted); font-size: .6rem; font-weight: 600; letter-spacing: .34em; text-transform: uppercase; white-space: nowrap; }
+.brand__tag::before { content: ""; width: 22px; height: 1px; background: linear-gradient(90deg, var(--gold-2), transparent); }
+[dir="rtl"] .brand__tag::before { background: linear-gradient(270deg, var(--gold-2), transparent); }
+html[lang="ar"] .brand__name { font-family: "El Messiri", "IBM Plex Sans Arabic", sans-serif; font-size: 1.95rem; letter-spacing: 0; text-transform: none; line-height: 1.05; }
+html[lang="ar"] .brand__tag { letter-spacing: 0; font-size: .76rem; }
+.site-footer .brand__logo { height: 52px; }
 
 .primary-nav { margin-inline-start: auto; }
 .primary-nav__list { display: flex; gap: .15rem; }
@@ -266,15 +279,22 @@ html[lang="ar"] .lang-switch span { font-family: "Inter", sans-serif; }
 [aria-expanded="true"] > .menu-toggle__open { display: none; }
 [aria-expanded="true"] > .menu-toggle__close { display: block; }
 
-@media (max-width: 1100px) and (min-width: 992px) {
+@media (max-width: 1199.98px) and (min-width: 992px) {
+  .brand__logo { height: 48px; }
+  .brand__name { font-size: 1.3rem; }
+  html[lang="ar"] .brand__name { font-size: 1.6rem; }
+  .brand__tag { display: none; }
   .primary-nav__list a { padding-inline: .55rem; font-size: .9rem; }
   .primary-nav__list a::after { inset-inline: .55rem; }
   .lang-switch span { display: none; }
 }
 @media (max-width: 991.98px) {
-  :root { --header-h: 66px; }
-  .brand__logo { height: 34px; }
-  .brand__name { font-size: 1.1rem; }
+  :root { --header-h: 72px; }
+  .brand { gap: .7rem; }
+  .brand__logo { height: 46px; }
+  .brand__name { font-size: 1.3rem; }
+  html[lang="ar"] .brand__name { font-size: 1.6rem; }
+  .brand__tag { font-size: .55rem; letter-spacing: .28em; }
   .menu-toggle { display: inline-flex; }
   .primary-nav {
     position: fixed; inset-inline: 0; top: var(--header-h); bottom: 0; z-index: 49;
@@ -295,10 +315,24 @@ html[lang="ar"] .lang-switch span { font-family: "Inter", sans-serif; }
   body.menu-open { overflow: hidden; }
   body.menu-open .site-header { transform: none; }
 }
+@media (max-width: 560px) { .site-header .brand__tag { display: none; } }
 @media (max-width: 420px) {
-  .brand__name { font-size: 1rem; }
-  .lang-switch span { display: none; }
+  .site-header__inner { gap: .5rem; }
+  .brand { gap: .5rem; min-width: 0; }
+  .brand__logo { height: 38px; }
+  .brand__name { font-size: 1.02rem; letter-spacing: .05em; }
+  html[lang="ar"] .brand__name { font-size: 1.4rem; }
   .site-header__tools { gap: .35rem; }
+  .site-header__tools .tool-btn { min-width: 38px; height: 38px; padding-inline: .5rem; }
+  .lang-switch span { display: none; }
+}
+@media (max-width: 345px) {
+  .brand { gap: .4rem; }
+  .brand__name { font-size: .86rem; letter-spacing: .02em; }
+  html[lang="ar"] .brand__name { font-size: 1.25rem; }
+  .brand__logo { height: 31px; }
+  .site-header__tools { gap: .25rem; }
+  .site-header__tools .tool-btn { min-width: 36px; height: 36px; padding-inline: .4rem; }
 }
 
 /* ---------- Hero (home) ---------- */
@@ -349,6 +383,38 @@ html[lang="ar"] .hero__scroll { letter-spacing: 0; font-size: .8rem; }
 .split__media { aspect-ratio: 1; }
 .about-home__media img, .split__media img { width: 100%; height: 100%; object-fit: cover; }
 @media (max-width: 991.98px) { .about-home__media, .split__media { aspect-ratio: 16 / 11; } }
+/* ---------- Scan effect (about photos) ----------
+   1) On scroll-in the photo is wiped open top→bottom while a gold beam rides the edge
+      and the image settles from a slight zoom.
+   2) Afterwards the beam keeps sweeping slowly, with a soft trailing glow.
+   The beam is a full-height layer moved with transform only (GPU, no layout). */
+.scan-media { isolation: isolate; }
+.scan-media::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg,
+    transparent 0, transparent calc(100% - 140px),
+    rgba(216, 195, 148, .07) calc(100% - 70px),
+    rgba(236, 220, 180, .26) calc(100% - 4px),
+    #f3e6c4 calc(100% - 2px), #f3e6c4 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+  filter: drop-shadow(0 0 8px rgba(216, 195, 148, .65));
+  opacity: .85;
+  transform: translateY(-100%);
+  animation: scan-sweep 6s cubic-bezier(.45, .05, .55, .95) 1.2s infinite;
+}
+.scan-media::after { content: ""; position: absolute; inset: 42% 0 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, transparent, rgba(4, 5, 7, .74)); }
+.scan-media .media-caption { z-index: 2; }
+@keyframes scan-sweep { 0% { transform: translateY(-100%); opacity: 0; } 6% { opacity: .85; } 94% { opacity: .85; } 100% { transform: translateY(0); opacity: 0; } }
+@keyframes scan-intro { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+
+.js .scan-media.reveal { opacity: 1; translate: none; clip-path: inset(0 0 100% 0); transition: clip-path 1.2s var(--ease); }
+.js .scan-media.reveal.is-visible { clip-path: inset(-80px); }
+.js .scan-media.reveal img { transform: scale(1.12); transition: transform 2s var(--ease); }
+.js .scan-media.reveal.is-visible img { transform: none; }
+.js .scan-media.reveal::before { animation: none; opacity: 0; }
+.js .scan-media.reveal.is-visible::before { opacity: 1; animation: scan-intro 1.2s var(--ease) both, scan-sweep 6s cubic-bezier(.45, .05, .55, .95) 1.8s infinite; }
+
 .media-caption { position: absolute; inset-inline-start: 1.25rem; bottom: 1.25rem; display: flex; align-items: center; gap: .85rem; padding: .85rem 1.1rem; border-radius: var(--radius); border: 1px solid var(--line-strong); background: rgba(10, 12, 15, .74); color: var(--text); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 .media-caption > .icon { width: 22px; height: 22px; color: var(--accent); }
 .media-caption strong { display: block; font-size: .95rem; }
@@ -734,6 +800,9 @@ html[lang="ar"] .signature span { letter-spacing: 0; font-size: .8rem; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
   .js .reveal { translate: none; }
   .goal-card__ring { animation: none; }
+  .scan-media::before, .js .scan-media.reveal.is-visible::before { display: none; }
+  .js .scan-media.reveal, .js .scan-media.reveal.is-visible { clip-path: none; }
+  .js .scan-media.reveal img, .js .scan-media.reveal.is-visible img { transform: none; }
 }
 
 @media print {

@@ -46,7 +46,8 @@ node src/build.mjs
 - **Colour tokens.** All colours are defined as tokens at the top of the file. `[data-theme="light"]` overrides the dark defaults, and both sets meet WCAG AA contrast.
 - **RTL.** Layout uses CSS logical properties such as `margin-inline-start` and `inset-inline-end`, so Arabic mirrors automatically. Directional icons, like arrows, flip with `.icon--dir`.
 - **Fixed-dark areas.** Photo areas (`.hero`, `.page-hero`, image tiles) always use the dark tokens so their text stays readable.
-- **Fonts.** Inter for Latin text and IBM Plex Sans Arabic for Arabic. Both are self-hosted and licensed under the SIL Open Font License.
+- **Fonts.** Inter for Latin text and IBM Plex Sans Arabic for Arabic. The brand wordmark uses Cinzel (EN) and El Messiri (AR), subset to ~10 KB each in `fonts/brand/`. All are self-hosted and licensed under the SIL Open Font License.
+- **Scan effect.** The about photos (`.scan-media`) wipe open on scroll with a gold beam, which then keeps sweeping. With reduced motion turned on, the photo simply appears.
 
 `js/site.js` contains, without dependencies:
 - theme switching and language memory;

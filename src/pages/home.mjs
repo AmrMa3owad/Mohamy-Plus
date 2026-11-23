@@ -48,7 +48,7 @@ ${introCards.map((c, i) => `      <li class="intro-card reveal" style="--i:${i}"
 
 <section class="section about-home" aria-labelledby="about-home-title">
   <div class="container about-home__layout">
-    <figure class="about-home__media reveal">
+    <figure class="about-home__media scan-media reveal">
       ${pic('about1', { alt: t('Bronze statue of Lady Justice holding the scales', 'تمثال برونزي لسيدة العدالة تحمل الميزان'), sizes: '(min-width: 992px) 40vw, 100vw' })}
       <figcaption class="media-caption">${icon('shield-check')}<span><strong>${t('Tailored', 'مصمّم لك')}</strong><small>${t('Guidance for your matter', 'توجيه يناسب مسألتك')}</small></span></figcaption>
     </figure>

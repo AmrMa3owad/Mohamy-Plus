@@ -100,6 +100,7 @@ function head(ctx, meta) {
 <meta name="theme-color" content="#f6f2ea" media="(prefers-color-scheme: light)">
 ${meta.noindex ? '<meta name="robots" content="noindex, follow">\n' : ''}<script>${boot}</script>
 <link rel="preload" href="${asset(lang === 'ar' ? 'fonts/plex-arabic/IBMPlexSansArabic-400.woff2' : 'fonts/creative/Inter-latin.woff2')}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="${asset(lang === 'ar' ? 'fonts/brand/ElMessiri-700.woff2' : 'fonts/brand/Cinzel-700.woff2')}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${asset('css/site.css')}?v=${ctx.version}">
 <link rel="icon" href="${asset('favicon.ico')}" sizes="48x48">
 <link rel="icon" href="${asset('images/favicon-32.png')}" type="image/png" sizes="32x32">
@@ -118,6 +119,18 @@ ${site.url && !meta.noindex ? `<link rel="canonical" href="${selfUrl}">
 ${selfUrl ? `<meta property="og:url" content="${selfUrl}">\n<meta property="og:image" content="${ogImage}">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n` : ''}<meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">${JSON.stringify(meta.jsonld ? [ld, meta.jsonld] : ld)}</script>
 </head>`;
+}
+
+/** Brand lockup: logo + wordmark (last word in gold) + optional tagline. */
+export function brandMark(ctx, { tagline = true, eager = false } = {}) {
+  const { L, t, asset } = ctx;
+  const words = L(site.name).split(' ');
+  const last = words.pop();
+  return `<img class="brand__logo" src="${asset('images/logo.webp')}" width="493" height="353" alt="" decoding="async"${eager ? '' : ' loading="lazy"'}>
+      <span class="brand__text">
+        <span class="brand__name">${words.join(' ')} <em>${last}</em></span>
+        ${tagline ? `<span class="brand__tag">${t('Legal Counsel · Cairo', 'استشارات قانونية · القاهرة')}</span>` : ''}
+      </span>`;
 }
 
 function topbar(ctx) {
@@ -147,8 +160,7 @@ function header(ctx) {
   return `<header class="site-header" id="site-header">
   <div class="container site-header__inner">
     <a class="brand" href="${href('home')}" aria-label="${t('Mohamy Plus — home', 'محامي بلس — الصفحة الرئيسية')}">
-      <img class="brand__logo" src="${asset('images/logo.webp')}" width="493" height="353" alt="" decoding="async">
-      <span class="brand__name">${L(site.name)}</span>
+      ${brandMark(ctx, { eager: true })}
     </a>
     <nav class="primary-nav" id="primary-nav" aria-label="${t('Main', 'القائمة الرئيسية')}">
       <ul class="primary-nav__list">
@@ -192,8 +204,7 @@ function footer(ctx) {
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="brand" href="${href('home')}">
-          <img class="brand__logo" src="${asset('images/logo.webp')}" width="493" height="353" alt="" loading="lazy" decoding="async">
-          <span class="brand__name">${L(site.name)}</span>
+          ${brandMark(ctx)}
         </a>
         <p>${t('Professional legal guidance and tailored legal services for individuals, families, entrepreneurs, and businesses across Egypt.', 'إرشاد قانوني مهني وخدمات قانونية مصممة خصيصًا للأفراد والأسر ورواد الأعمال والشركات في جميع أنحاء مصر.')}</p>
         ${socialList(ctx, 'social--footer')}

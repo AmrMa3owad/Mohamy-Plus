@@ -94,12 +94,22 @@
   function initReveal() {
     const items = $$('.reveal');
     if (!('IntersectionObserver' in window) || reducedMotion()) { items.forEach((el) => el.classList.add('is-visible')); return; }
+    // Elements that start fully clipped (the scan-reveal photos) never "intersect" in Chrome,
+    // because IntersectionObserver honours the target's own clip-path. Observe their
+    // (unclipped) parent instead and reveal the child.
+    const targets = new Map();
     const io = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+        if (!entry.isIntersecting) return;
+        (targets.get(entry.target) || [entry.target]).forEach((el) => el.classList.add('is-visible'));
+        io.unobserve(entry.target);
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-    items.forEach((el) => io.observe(el));
+    items.forEach((el) => {
+      const watch = el.classList.contains('scan-media') ? el.parentElement : el;
+      if (watch !== el) targets.set(watch, [...(targets.get(watch) || []), el]);
+      io.observe(watch);
+    });
     // Elements targeted by a hash link should be visible immediately.
     if (location.hash) { const t = document.getElementById(decodeURIComponent(location.hash.slice(1))); if (t) $$('.reveal', t).concat(t.closest('.reveal') || []).forEach((el) => el.classList.add('is-visible')); }
   }
