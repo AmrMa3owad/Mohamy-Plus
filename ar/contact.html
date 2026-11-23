@@ -10,7 +10,8 @@
 <meta name="theme-color" content="#f6f2ea" media="(prefers-color-scheme: light)">
 <script>(function(){var d=document.documentElement,s=null;d.className+=' js';try{s=localStorage.getItem('mohamy-plus-theme')}catch(e){}d.setAttribute('data-theme',s==='light'||s==='dark'?s:(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'));try{var p=localStorage.getItem('mohamy-plus-language');if(p&&p!==d.lang&&(p==='ar'||p==='en')&&!/[?&]lang=/.test(location.search)){d.style.visibility='hidden';location.replace("../contact.html"+location.hash)}}catch(e){}})();</script>
 <link rel="preload" href="../fonts/plex-arabic/IBMPlexSansArabic-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../css/site.css?v=06b0256863bf">
+<link rel="preload" href="../fonts/brand/ElMessiri-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css?v=4cc1afe6ca6e">
 <link rel="icon" href="../favicon.ico" sizes="48x48">
 <link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
@@ -47,7 +48,10 @@
   <div class="container site-header__inner">
     <a class="brand" href="index.html" aria-label="محامي بلس — الصفحة الرئيسية">
       <img class="brand__logo" src="../images/logo.webp" width="493" height="353" alt="" decoding="async">
-      <span class="brand__name">محامي بلس</span>
+      <span class="brand__text">
+        <span class="brand__name">محامي <em>بلس</em></span>
+        <span class="brand__tag">استشارات قانونية · القاهرة</span>
+      </span>
     </a>
     <nav class="primary-nav" id="primary-nav" aria-label="القائمة الرئيسية">
       <ul class="primary-nav__list">
@@ -178,8 +182,11 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="brand" href="index.html">
-          <img class="brand__logo" src="../images/logo.webp" width="493" height="353" alt="" loading="lazy" decoding="async">
-          <span class="brand__name">محامي بلس</span>
+          <img class="brand__logo" src="../images/logo.webp" width="493" height="353" alt="" decoding="async" loading="lazy">
+      <span class="brand__text">
+        <span class="brand__name">محامي <em>بلس</em></span>
+        <span class="brand__tag">استشارات قانونية · القاهرة</span>
+      </span>
         </a>
         <p>إرشاد قانوني مهني وخدمات قانونية مصممة خصيصًا للأفراد والأسر ورواد الأعمال والشركات في جميع أنحاء مصر.</p>
         <ul class="social social--footer" aria-label="محامي بلس على وسائل التواصل">
@@ -228,6 +235,6 @@
     </div>
   </div>
 </footer>
-<script src="../js/site.js?v=06b0256863bf" defer></script>
+<script src="../js/site.js?v=4cc1afe6ca6e" defer></script>
 </body>
 </html>
