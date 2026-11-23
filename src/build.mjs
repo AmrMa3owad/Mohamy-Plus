@@ -17,7 +17,8 @@ const modules = {
   notfound: await import('./pages/notfound.mjs'),
 };
 
-const hash = f => crypto.createHash('sha1').update(fs.readFileSync(path.join(ROOT, f))).digest('hex').slice(0, 8);
+// Hash with normalised line endings so Windows (CRLF) and Unix (LF) checkouts build identically.
+const hash = f => crypto.createHash('sha1').update(fs.readFileSync(path.join(ROOT, f), 'utf8').replace(/\r\n/g, '\n')).digest('hex').slice(0, 8);
 const version = hash('css/site.css') + hash('js/site.js').slice(0, 4);
 const write = (rel, content) => {
   const out = path.join(ROOT, rel);
