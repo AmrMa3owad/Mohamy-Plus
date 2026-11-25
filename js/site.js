@@ -123,6 +123,48 @@
     if (message) input.setAttribute('aria-invalid', 'true'); else input.removeAttribute('aria-invalid');
     if (err) err.textContent = message || '';
   }
+  /* ---------- CRM hand-off ----------
+     Each request is also saved as a new lead in the firm's CRM (Mohamy Plus),
+     so it is never lost if the visitor does not press Send in WhatsApp.
+     Where the visitor came from (an ad's utm tags, or the site that sent them)
+     is remembered for the visit and becomes the lead's source and campaign. */
+  const ATTR_KEY = 'mohamy-plus-attribution';
+  const SOURCE_HINTS = [[/whats|^wa$/i, 'WHATSAPP'], [/insta|^ig$/i, 'INSTAGRAM'], [/tiktok|^tt$/i, 'TIKTOK'], [/facebook|^fb$|meta/i, 'FACEBOOK']];
+  const sourceFrom = (text) => { const hit = SOURCE_HINTS.find(([re]) => re.test(text || '')); return hit ? hit[1] : ''; };
+  function initAttribution() {
+    try {
+      if (sessionStorage.getItem(ATTR_KEY)) return;
+      const q = new URLSearchParams(location.search);
+      let referrer = '';
+      try { referrer = document.referrer ? new URL(document.referrer).hostname : ''; } catch (e) { referrer = ''; }
+      const source = sourceFrom(q.get('utm_source')) || (q.get('fbclid') ? 'FACEBOOK' : '') || (q.get('ttclid') ? 'TIKTOK' : '') || sourceFrom(referrer) || 'WEBSITE';
+      const campaign = [q.get('utm_campaign'), q.get('utm_medium'), q.get('gclid') ? 'google-ads' : ''].filter(Boolean).join(' · ').slice(0, 120);
+      sessionStorage.setItem(ATTR_KEY, JSON.stringify({ source, campaign }));
+    } catch (e) { /* storage blocked: the lead is still sent, as a website lead */ }
+  }
+  function attribution() {
+    try { return JSON.parse(sessionStorage.getItem(ATTR_KEY) || 'null') || { source: 'WEBSITE', campaign: '' }; } catch (e) { return { source: 'WEBSITE', campaign: '' }; }
+  }
+  /** Resolves true once the CRM confirms it saved the lead; false if it is not set up or did not answer. */
+  function sendToCrm(form, fields) {
+    const url = form.dataset.crm;
+    if (!url || !window.fetch) return Promise.resolve(false);
+    const meta = attribution();
+    const body = new URLSearchParams(Object.assign({
+      form: form.dataset.crmForm || '', language: isAr ? 'ar' : 'en', page: location.pathname,
+      source: meta.source, campaign: meta.campaign, website: (form.elements.website && form.elements.website.value) || '',
+    }, fields));
+    return fetch(url, { method: 'POST', body, keepalive: true })
+      .then((response) => response.json())
+      .then((result) => !!(result && result.ok))
+      .catch(() => fetch(url, { method: 'POST', mode: 'no-cors', body, keepalive: true }).then(() => false, () => false));
+  }
+  function showDelivered(root, form, fields) {
+    const note = $('[data-delivered]', root);
+    if (note) note.hidden = true;
+    sendToCrm(form, fields).then((ok) => { if (ok && note) note.hidden = false; });
+  }
+
   function openWhatsApp(number, lines) {
     const url = `https://wa.me/${number}?text=${encodeURIComponent(lines.join('\n'))}`;
     window.open(url, '_blank', 'noopener');
@@ -207,6 +249,10 @@
       tabs.forEach((t) => { t.removeAttribute('aria-current'); t.classList.add('is-done'); });
       success.hidden = false;
       $('[data-wa-fallback]', success).href = url;
+      showDelivered(success, form, {
+        name: val('name'), phone: val('phone'), email: val('email'), message: val('summary'),
+        practiceArea: category ? category.dataset.area || category.value : '', priority: priority ? priority.value : '',
+      });
       const title = $('h3', success);
       title.focus({ preventScroll: true });
     });
@@ -240,6 +286,7 @@
       const result = $('[data-result]', form);
       result.hidden = false;
       $('[data-wa-fallback]', result).href = url;
+      showDelivered(result, form, { name: f('name').value.trim(), email, subject: f('subject').value.trim(), message: f('message').value.trim() });
       result.setAttribute('role', 'status');
     });
   }
@@ -425,6 +472,7 @@
     initHeader();
     initReveal();
     initCounters();
+    initAttribution();
     initIntake();
     initContact();
     initSearch();

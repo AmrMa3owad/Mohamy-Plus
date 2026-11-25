@@ -11,7 +11,7 @@
 <script>(function(){var d=document.documentElement,s=null;d.className+=' js';try{s=localStorage.getItem('mohamy-plus-theme')}catch(e){}d.setAttribute('data-theme',s==='light'||s==='dark'?s:(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'));try{var p=localStorage.getItem('mohamy-plus-language');if(p&&p!==d.lang&&(p==='ar'||p==='en')&&!/[?&]lang=/.test(location.search)){d.style.visibility='hidden';var t="ar/";if(location.protocol==='file:'&&t.slice(-1)==='/')t+='index.html';location.replace(t+location.hash)}}catch(e){}})();</script>
 <link rel="preload" href="fonts/creative/Inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/brand/Cinzel-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css?v=59c08148bed4b392">
+<link rel="stylesheet" href="css/site.css?v=7b64eedb1a5cb392">
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" href="images/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
@@ -300,6 +300,7 @@
 
     <form class="terminal reveal" data-intake novalidate aria-labelledby="intake-title"
       data-wa="201080509733"
+      data-crm="" data-crm-form="consultation"
       data-msg-title="Mohamy Plus — consultation request"
       data-msg-name="Name / organization"
       data-msg-phone="Phone"
@@ -328,13 +329,13 @@
       <fieldset class="terminal__step" data-step="1">
         <legend class="step-bar"><span class="step-bar__tag" tabindex="-1">Select category</span><span>What does your matter relate to?</span></legend>
         <div class="chip-grid">
-          <label class="chip"><input type="radio" name="category" value="Corporate & M&A" checked><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-building"></use></svg>Corporate & M&A</span></label>
-          <label class="chip"><input type="radio" name="category" value="Arbitration & Dispute"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-shield"></use></svg>Arbitration & Dispute</span></label>
-          <label class="chip"><input type="radio" name="category" value="Capital Markets"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chart"></use></svg>Capital Markets</span></label>
-          <label class="chip"><input type="radio" name="category" value="Criminal Defense"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-gavel"></use></svg>Criminal Defense</span></label>
-          <label class="chip"><input type="radio" name="category" value="Real Estate Law"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-houses"></use></svg>Real Estate Law</span></label>
-          <label class="chip"><input type="radio" name="category" value="Family & Estate"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-people-fill"></use></svg>Family & Estate</span></label>
-          <label class="chip"><input type="radio" name="category" value="Other service"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-question"></use></svg>Other service</span></label>
+          <label class="chip"><input type="radio" name="category" value="Corporate & M&A" data-area="Corporate & M&A" checked><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-building"></use></svg>Corporate & M&A</span></label>
+          <label class="chip"><input type="radio" name="category" value="Arbitration & Dispute" data-area="Arbitration & Dispute"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-shield"></use></svg>Arbitration & Dispute</span></label>
+          <label class="chip"><input type="radio" name="category" value="Capital Markets" data-area="Capital Markets"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chart"></use></svg>Capital Markets</span></label>
+          <label class="chip"><input type="radio" name="category" value="Criminal Defense" data-area="Criminal Defense"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-gavel"></use></svg>Criminal Defense</span></label>
+          <label class="chip"><input type="radio" name="category" value="Real Estate Law" data-area="Real Estate Law"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-houses"></use></svg>Real Estate Law</span></label>
+          <label class="chip"><input type="radio" name="category" value="Family & Estate" data-area="Family & Estate"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-people-fill"></use></svg>Family & Estate</span></label>
+          <label class="chip"><input type="radio" name="category" value="Other service" data-area="Other service"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-question"></use></svg>Other service</span></label>
         </div>
         <p class="hint-box"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-question"></use></svg><span><strong>Not sure which category applies?</strong> No problem. Tell us briefly what you need assistance with, and we'll help identify the appropriate next step.</span></p>
         <fieldset class="priority">
@@ -382,6 +383,7 @@
             <span class="field__error" id="intake-email-error"></span>
           </div>
         </div>
+        <div class="hp-field" aria-hidden="true"><label for="intake-website">Leave this field empty</label><input id="intake-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
         <button class="btn btn--gold btn--block btn--lg" type="submit"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-send"></use></svg><span>Continue in WhatsApp</span></button>
         <p class="terminal__note">WhatsApp will open with a draft for you to review. Avoid sending confidential documents until the firm confirms a secure channel.</p>
         <div class="terminal__actions">
@@ -392,6 +394,7 @@
       <div class="terminal__success" data-success hidden>
         <span class="terminal__success-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check-circle"></use></svg></span>
         <h3 tabindex="-1">Your WhatsApp draft is ready</h3>
+        <p class="terminal__delivered" data-delivered hidden><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check-circle"></use></svg><span>Your request has reached our team. We will contact you even if you do not send the WhatsApp message.</span></p>
         <p>The message has not been sent yet. Review the draft in WhatsApp and press Send there. If WhatsApp did not open, use the button below.</p>
         <div class="terminal__actions terminal__actions--center">
           <a class="btn btn--gold" data-wa-fallback href="https://wa.me/201080509733" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-whatsapp"></use></svg><span>Open WhatsApp</span></a>
@@ -503,7 +506,7 @@
     </div>
   </div>
 </footer>
-<div class="phx-root" data-phoenix data-wa="201080509733" data-root="./" data-src="js/phoenix.js?v=59c08148bed4b392" data-data="js/phoenix-data.en.js?v=59c08148bed4b392">
+<div class="phx-root" data-phoenix data-wa="201080509733" data-root="./" data-src="js/phoenix.js?v=7b64eedb1a5cb392" data-data="js/phoenix-data.en.js?v=7b64eedb1a5cb392">
   <div class="phx-teaser" hidden>
     <p>Hi, I’m <strong>Phoenix</strong>. Need help finding your way or booking a consultation?</p>
     <button type="button" class="phx-teaser__close" data-phx-dismiss aria-label="Dismiss"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
@@ -546,6 +549,6 @@
     <span class="phx-launcher__label" aria-hidden="true">Ask Phoenix</span>
   </button>
 </div>
-<script src="js/site.js?v=59c08148bed4b392" defer></script>
+<script src="js/site.js?v=7b64eedb1a5cb392" defer></script>
 </body>
 </html>

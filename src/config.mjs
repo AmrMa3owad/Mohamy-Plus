@@ -21,6 +21,13 @@ export const site = {
     { id: 'tiktok', label: 'TikTok', href: 'https://www.tiktok.com/@mohamyplus' },
     { id: 'whatsapp', label: 'WhatsApp', href: 'https://wa.me/201080509733' },
   ],
+  // Mohamy Plus CRM: every consultation and contact request is also saved as a
+  // new lead there, so none is lost if the visitor never presses Send in WhatsApp.
+  // Paste the private link from the CRM (Settings -> Website leads), then rebuild.
+  // Leave empty to only open WhatsApp, as before.
+  crm: {
+    intakeUrl: '',
+  },
   // Optional sections paused at the client's request (see src/sections/paused.mjs).
   // Turn on only once real, client-approved content has been added.
   showClientLogos: false,

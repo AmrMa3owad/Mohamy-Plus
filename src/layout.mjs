@@ -1,9 +1,11 @@
+import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';
 import path from 'node:path';
 import { site } from './config.mjs';
 import { practiceAreas } from './data.mjs';
 
-export const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/(\w:)/, '$1')), '..');
+// fileURLToPath decodes spaces (%20) and Windows drive letters, so the build works from any folder.
+export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 // Page registry: key -> clean URL path (a folder served by its index.html).
 // The same paths exist under /ar/. Old *.html addresses redirect here (see build.mjs).

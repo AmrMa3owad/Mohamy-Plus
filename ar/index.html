@@ -11,7 +11,7 @@
 <script>(function(){var d=document.documentElement,s=null;d.className+=' js';try{s=localStorage.getItem('mohamy-plus-theme')}catch(e){}d.setAttribute('data-theme',s==='light'||s==='dark'?s:(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'));try{var p=localStorage.getItem('mohamy-plus-language');if(p&&p!==d.lang&&(p==='ar'||p==='en')&&!/[?&]lang=/.test(location.search)){d.style.visibility='hidden';var t="../";if(location.protocol==='file:'&&t.slice(-1)==='/')t+='index.html';location.replace(t+location.hash)}}catch(e){}})();</script>
 <link rel="preload" href="../fonts/plex-arabic/IBMPlexSansArabic-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/brand/ElMessiri-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../css/site.css?v=59c08148bed4b392">
+<link rel="stylesheet" href="../css/site.css?v=7b64eedb1a5cb392">
 <link rel="icon" href="../favicon.ico" sizes="48x48">
 <link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
@@ -300,6 +300,7 @@
 
     <form class="terminal reveal" data-intake novalidate aria-labelledby="intake-title"
       data-wa="201080509733"
+      data-crm="" data-crm-form="consultation"
       data-msg-title="محامي بلس — طلب استشارة"
       data-msg-name="الاسم / الجهة"
       data-msg-phone="الهاتف"
@@ -328,13 +329,13 @@
       <fieldset class="terminal__step" data-step="1">
         <legend class="step-bar"><span class="step-bar__tag" tabindex="-1">اختر الفئة</span><span>بماذا تتعلق مسألتك؟</span></legend>
         <div class="chip-grid">
-          <label class="chip"><input type="radio" name="category" value="الشركات والاستحواذ" checked><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-building"></use></svg>الشركات والاستحواذ</span></label>
-          <label class="chip"><input type="radio" name="category" value="التحكيم والمنازعات"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-shield"></use></svg>التحكيم والمنازعات</span></label>
-          <label class="chip"><input type="radio" name="category" value="أسواق المال"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chart"></use></svg>أسواق المال</span></label>
-          <label class="chip"><input type="radio" name="category" value="الدفاع الجنائي"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-gavel"></use></svg>الدفاع الجنائي</span></label>
-          <label class="chip"><input type="radio" name="category" value="القانون العقاري"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-houses"></use></svg>القانون العقاري</span></label>
-          <label class="chip"><input type="radio" name="category" value="الأسرة والتركات"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-people-fill"></use></svg>الأسرة والتركات</span></label>
-          <label class="chip"><input type="radio" name="category" value="خدمة أخرى"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-question"></use></svg>خدمة أخرى</span></label>
+          <label class="chip"><input type="radio" name="category" value="الشركات والاستحواذ" data-area="Corporate & M&A" checked><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-building"></use></svg>الشركات والاستحواذ</span></label>
+          <label class="chip"><input type="radio" name="category" value="التحكيم والمنازعات" data-area="Arbitration & Dispute"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-shield"></use></svg>التحكيم والمنازعات</span></label>
+          <label class="chip"><input type="radio" name="category" value="أسواق المال" data-area="Capital Markets"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chart"></use></svg>أسواق المال</span></label>
+          <label class="chip"><input type="radio" name="category" value="الدفاع الجنائي" data-area="Criminal Defense"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-gavel"></use></svg>الدفاع الجنائي</span></label>
+          <label class="chip"><input type="radio" name="category" value="القانون العقاري" data-area="Real Estate Law"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-houses"></use></svg>القانون العقاري</span></label>
+          <label class="chip"><input type="radio" name="category" value="الأسرة والتركات" data-area="Family & Estate"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-people-fill"></use></svg>الأسرة والتركات</span></label>
+          <label class="chip"><input type="radio" name="category" value="خدمة أخرى" data-area="Other service"><span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-question"></use></svg>خدمة أخرى</span></label>
         </div>
         <p class="hint-box"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-question"></use></svg><span><strong>لست متأكدًا من الفئة المناسبة؟</strong> لا مشكلة. أخبرنا باختصار بما تحتاج إليه، وسنساعدك على تحديد الخطوة المناسبة.</span></p>
         <fieldset class="priority">
@@ -382,6 +383,7 @@
             <span class="field__error" id="intake-email-error"></span>
           </div>
         </div>
+        <div class="hp-field" aria-hidden="true"><label for="intake-website">Leave this field empty</label><input id="intake-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
         <button class="btn btn--gold btn--block btn--lg" type="submit"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-send"></use></svg><span>المتابعة عبر واتساب</span></button>
         <p class="terminal__note">سيُفتح واتساب ومعه مسودة لمراجعتها. تجنّب إرسال مستندات سرية حتى يؤكد المكتب قناة تواصل آمنة.</p>
         <div class="terminal__actions">
@@ -392,6 +394,7 @@
       <div class="terminal__success" data-success hidden>
         <span class="terminal__success-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check-circle"></use></svg></span>
         <h3 tabindex="-1">مسودة واتساب جاهزة</h3>
+        <p class="terminal__delivered" data-delivered hidden><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check-circle"></use></svg><span>وصل طلبك إلى فريقنا، وسنتواصل معك حتى إن لم ترسل رسالة واتساب.</span></p>
         <p>لم تُرسل الرسالة بعد. راجع المسودة في واتساب ثم اضغط إرسال. إذا لم يُفتح واتساب، استخدم الزر أدناه.</p>
         <div class="terminal__actions terminal__actions--center">
           <a class="btn btn--gold" data-wa-fallback href="https://wa.me/201080509733" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-whatsapp"></use></svg><span>افتح واتساب</span></a>
@@ -503,7 +506,7 @@
     </div>
   </div>
 </footer>
-<div class="phx-root" data-phoenix data-wa="201080509733" data-root="../ar/" data-src="../js/phoenix.js?v=59c08148bed4b392" data-data="../js/phoenix-data.ar.js?v=59c08148bed4b392">
+<div class="phx-root" data-phoenix data-wa="201080509733" data-root="../ar/" data-src="../js/phoenix.js?v=7b64eedb1a5cb392" data-data="../js/phoenix-data.ar.js?v=7b64eedb1a5cb392">
   <div class="phx-teaser" hidden>
     <p>مرحبًا، أنا <strong>فينيكس</strong>. هل تحتاج إلى مساعدة في التنقل أو حجز استشارة؟</p>
     <button type="button" class="phx-teaser__close" data-phx-dismiss aria-label="إخفاء"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
@@ -546,6 +549,6 @@
     <span class="phx-launcher__label" aria-hidden="true">اسأل فينيكس</span>
   </button>
 </div>
-<script src="../js/site.js?v=59c08148bed4b392" defer></script>
+<script src="../js/site.js?v=7b64eedb1a5cb392" defer></script>
 </body>
 </html>

@@ -8,7 +8,7 @@ Plain HTML, one stylesheet, one script. No frameworks and no runtime dependencie
 | Pages | 7 English pages at the root, 7 Arabic pages in `/ar/`, plus `404.html` |
 | Themes | Dark and light. Follows the visitor's system setting until they choose one; the choice is remembered. |
 | Languages | Real Arabic pages (`lang="ar" dir="rtl"`) rendered at build time, so search engines can index them. The language switch is remembered between visits. |
-| Forms | The consultation wizard and contact form open WhatsApp with a pre-written draft, in the page's language. Nothing is sent to a server. |
+| Forms | The consultation wizard and contact form open WhatsApp with a pre-written draft, in the page's language. When the CRM link is set (`crm.intakeUrl` in `src/config.mjs`), each request is also saved as a new lead in the Mohamy Plus CRM — see *Leads into the CRM* below. |
 
 ## Editing content
 
@@ -51,13 +51,28 @@ Each page is a folder with an `index.html`, so addresses have no `.html`:
 - **Adding or renaming a page:** change the `pages` table in `src/layout.mjs`. Every link, the language switch, Phoenix and the sitemap follow it.
 - **Previewing locally:** you can double-click `index.html` and browse normally. When a page is opened from disk (`file://`), the site sends folder links to their `index.html` automatically, so the address bar shows `…/about/index.html` there. To see the clean addresses exactly as on the live site, run `python -m http.server` in this folder and open `http://localhost:8000`.
 
+## Leads into the CRM
+
+Every consultation request and contact message is also saved as a **new lead** in the firm's CRM (Mohamy Plus), so none is lost when a visitor never presses Send in WhatsApp. WhatsApp still opens exactly as before.
+
+1. In the CRM, an owner opens **Settings → Website leads**, turns it on, and copies the private link.
+2. Paste it into `crm.intakeUrl` in `src/config.mjs`, run `node src/build.mjs`, and publish the site.
+
+What the CRM receives: name, phone, email, the summary or message, the subject, the practice area and priority chosen (mapped to the CRM's own areas and priorities), the form, the page language, and where the visitor came from:
+
+- `utm_source` / `utm_campaign` on the landing link (e.g. `?utm_source=instagram&utm_campaign=eid-offer`) become the lead's **Source** and **Campaign**. Use them on every ad and social-profile link.
+- Without utm tags, Facebook/TikTok click IDs or the referring site (instagram.com, facebook.com, …) are used; otherwise the source is *Website*.
+
+The visitor sees *"Your request has reached our team"* only after the CRM confirms it saved the lead. If the CRM cannot be reached, nothing changes for the visitor: WhatsApp still opens. A hidden field catches simple spam bots, the same submission sent twice is saved once, and the CRM refuses floods. The link is visible in the page source (as with any website form); it can only create leads, never read them, and the owner can issue a new link at any time (then update `src/config.mjs` and rebuild).
+
 ## Before going live
 
 1. **Set the domain.** Put it in `site.url` in `src/config.mjs`, for example `https://mohamyplus.com`, then rebuild. This adds:
    - canonical URLs and `hreflang` alternates;
    - absolute Open Graph URLs and share images;
    - `sitemap.xml`, also referenced from `robots.txt`.
-2. **Paused sections.** Client logos and testimonials are switched off in `src/config.mjs`. Turn them on only once there is real, client-approved content with written permission to publish.
+2. **Connect the CRM.** Set `crm.intakeUrl` (see *Leads into the CRM*) and rebuild.
+3. **Paused sections.** Client logos and testimonials are switched off in `src/config.mjs`. Turn them on only once there is real, client-approved content with written permission to publish.
 
 ## Design system
 

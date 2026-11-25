@@ -48,6 +48,7 @@ ${methods.map((m, i) => {
 
     <form class="terminal reveal" data-contact novalidate aria-labelledby="contact-form-title"
       data-wa="${site.whatsapp}"
+      data-crm="${site.crm.intakeUrl}" data-crm-form="contact"
       data-msg-title="${t('Mohamy Plus — contact request', 'محامي بلس — طلب تواصل')}"
       data-msg-name="${t('Name', 'الاسم')}" data-msg-email="${t('Email', 'البريد الإلكتروني')}" data-msg-subject="${t('Subject', 'الموضوع')}" data-msg-message="${t('Message', 'الرسالة')}"
       data-err-required="${t('This field is required.', 'هذا الحقل مطلوب.')}" data-err-email="${t('Please enter a valid email address.', 'يُرجى إدخال بريد إلكتروني صحيح.')}">
@@ -80,10 +81,14 @@ ${methods.map((m, i) => {
             <span class="field__error" id="c-message-error"></span>
           </div>
         </div>
+        <div class="hp-field" aria-hidden="true"><label for="c-website">Leave this field empty</label><input id="c-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
         <button class="btn btn--gold btn--block btn--lg" type="submit">${icon('send')}<span>${t('Prepare WhatsApp message', 'إعداد رسالة واتساب')}</span></button>
         <div class="form-result" data-result hidden>
           ${icon('check-circle')}
-          <p><strong>${t('Your draft is ready.', 'المسودة جاهزة.')}</strong> ${t('Review the prefilled WhatsApp message and press Send there when you are ready.', 'راجع رسالة واتساب المُعدّة واضغط إرسال عندما تكون مستعدًا.')} <a data-wa-fallback href="${ctx.wa()}" target="_blank" rel="noopener">${t('Open WhatsApp', 'افتح واتساب')}</a></p>
+          <div class="form-result__body">
+            <p class="terminal__delivered" data-delivered hidden>${icon('check-circle')}<span>${t('Your message has reached our team. We will reply even if you do not send the WhatsApp message.', 'وصلت رسالتك إلى فريقنا، وسنرد عليك حتى إن لم ترسل رسالة واتساب.')}</span></p>
+            <p><strong>${t('Your draft is ready.', 'المسودة جاهزة.')}</strong> ${t('Review the prefilled WhatsApp message and press Send there when you are ready.', 'راجع رسالة واتساب المُعدّة واضغط إرسال عندما تكون مستعدًا.')} <a data-wa-fallback href="${ctx.wa()}" target="_blank" rel="noopener">${t('Open WhatsApp', 'افتح واتساب')}</a></p>
+          </div>
         </div>
       </div>
     </form>

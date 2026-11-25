@@ -17,7 +17,7 @@ export function intakeSection(ctx) {
       <header class="section-head section-head--start reveal">
         <span class="kicker kicker--live"><span class="kicker__dot" aria-hidden="true"></span>${t('Consultation Request', 'طلب استشارة')}</span>
         <h2 class="section-title" id="intake-title">${t('Consultation Request <em>&amp; Case Intake</em>', 'طلب استشارة <em>وعرض المسألة</em>')}</h2>
-        <p class="section-lead">${t('Continue opens WhatsApp with these details prefilled. Review the message before sending, and avoid including confidential or sensitive information.', 'عند المتابعة يُفتح واتساب وبه هذه التفاصيل جاهزة. راجع الرسالة قبل إرسالها، وتجنّب تضمين أي معلومات سرية أو حساسة.')}</p>
+        <p class="section-lead">${site.crm.intakeUrl ? t('Your request goes straight to our team, and WhatsApp opens with the details prefilled so you can message us too. Avoid including confidential or sensitive information.', 'يصل طلبك مباشرةً إلى فريقنا، ويُفتح واتساب وبه التفاصيل جاهزة لتراسلنا أيضًا. تجنّب تضمين أي معلومات سرية أو حساسة.') : t('Continue opens WhatsApp with these details prefilled. Review the message before sending, and avoid including confidential or sensitive information.', 'عند المتابعة يُفتح واتساب وبه هذه التفاصيل جاهزة. راجع الرسالة قبل إرسالها، وتجنّب تضمين أي معلومات سرية أو حساسة.')}</p>
       </header>
       <ul class="feature-list">
 ${intakeFeatures.map((f, i) => `        <li class="feature-row reveal" style="--i:${i}"><span class="icon-badge icon-badge--sm">${icon(f.icon)}</span><div><h3>${L(f.title)}</h3><p>${L(f.text)}</p></div></li>`).join('\n')}
@@ -26,6 +26,7 @@ ${intakeFeatures.map((f, i) => `        <li class="feature-row reveal" style="--
 
     <form class="terminal reveal" data-intake novalidate aria-labelledby="intake-title"
       data-wa="${site.whatsapp}"
+      data-crm="${site.crm.intakeUrl}" data-crm-form="consultation"
       data-msg-title="${t('Mohamy Plus — consultation request', 'محامي بلس — طلب استشارة')}"
       data-msg-name="${t('Name / organization', 'الاسم / الجهة')}"
       data-msg-phone="${t('Phone', 'الهاتف')}"
@@ -52,7 +53,7 @@ ${tabs.map((label, i) => `        <li data-tab="${i + 1}"${i === 0 ? ' aria-curr
       <fieldset class="terminal__step" data-step="1">
         <legend class="step-bar"><span class="step-bar__tag" tabindex="-1">${t('Select category', 'اختر الفئة')}</span><span>${t('What does your matter relate to?', 'بماذا تتعلق مسألتك؟')}</span></legend>
         <div class="chip-grid">
-${intakeCategories.map((c, i) => `          <label class="chip"><input type="radio" name="category" value="${L(c.label)}"${i === 0 ? ' checked' : ''}><span>${icon(c.icon)}${L(c.label)}</span></label>`).join('\n')}
+${intakeCategories.map((c, i) => `          <label class="chip"><input type="radio" name="category" value="${L(c.label)}" data-area="${c.value}"${i === 0 ? ' checked' : ''}><span>${icon(c.icon)}${L(c.label)}</span></label>`).join('\n')}
         </div>
         <p class="hint-box">${icon('question')}<span><strong>${t('Not sure which category applies?', 'لست متأكدًا من الفئة المناسبة؟')}</strong> ${t("No problem. Tell us briefly what you need assistance with, and we'll help identify the appropriate next step.", 'لا مشكلة. أخبرنا باختصار بما تحتاج إليه، وسنساعدك على تحديد الخطوة المناسبة.')}</span></p>
         <fieldset class="priority">
@@ -98,6 +99,7 @@ ${priorities.map(([value, label, badge], i) => `            <label><input type="
             <span class="field__error" id="intake-email-error"></span>
           </div>
         </div>
+        <div class="hp-field" aria-hidden="true"><label for="intake-website">Leave this field empty</label><input id="intake-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
         <button class="btn btn--gold btn--block btn--lg" type="submit">${icon('send')}<span>${t('Continue in WhatsApp', 'المتابعة عبر واتساب')}</span></button>
         <p class="terminal__note">${t('WhatsApp will open with a draft for you to review. Avoid sending confidential documents until the firm confirms a secure channel.', 'سيُفتح واتساب ومعه مسودة لمراجعتها. تجنّب إرسال مستندات سرية حتى يؤكد المكتب قناة تواصل آمنة.')}</p>
         <div class="terminal__actions">
@@ -108,6 +110,7 @@ ${priorities.map(([value, label, badge], i) => `            <label><input type="
       <div class="terminal__success" data-success hidden>
         <span class="terminal__success-icon">${icon('check-circle')}</span>
         <h3 tabindex="-1">${t('Your WhatsApp draft is ready', 'مسودة واتساب جاهزة')}</h3>
+        <p class="terminal__delivered" data-delivered hidden>${icon('check-circle')}<span>${t('Your request has reached our team. We will contact you even if you do not send the WhatsApp message.', 'وصل طلبك إلى فريقنا، وسنتواصل معك حتى إن لم ترسل رسالة واتساب.')}</span></p>
         <p>${t('The message has not been sent yet. Review the draft in WhatsApp and press Send there. If WhatsApp did not open, use the button below.', 'لم تُرسل الرسالة بعد. راجع المسودة في واتساب ثم اضغط إرسال. إذا لم يُفتح واتساب، استخدم الزر أدناه.')}</p>
         <div class="terminal__actions terminal__actions--center">
           <a class="btn btn--gold" data-wa-fallback href="${ctx.wa()}" target="_blank" rel="noopener">${icon('whatsapp')}<span>${t('Open WhatsApp', 'افتح واتساب')}</span></a>
