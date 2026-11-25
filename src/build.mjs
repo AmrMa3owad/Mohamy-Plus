@@ -52,10 +52,10 @@ const legacy = {
   'about.html': 'about', 'practice-area.html': 'practice', 'cases.html': 'help', 'attorney.html': 'help',
   'blog.html': 'insights', 'blog-single.html': 'article', 'contact.html': 'contact',
 };
-const redirect = (target, lang) => `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><title>Moved</title><meta name="robots" content="noindex"><link rel="canonical" href="${target}"><script>var t=${JSON.stringify(target)};if(location.protocol==='file:'&&t.slice(-1)==='/')t+='index.html';location.replace(t+location.search+location.hash)</script><meta http-equiv="refresh" content="0; url=${target}"></head><body><p><a href="${target}">This page has moved.</a></p></body></html>\n`;
+const redirect = (target, lang, canonical) => `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><title>Moved</title><meta name="robots" content="noindex"><link rel="canonical" href="${canonical || target}"><script>var t=${JSON.stringify(target)};if(location.protocol==='file:'&&t.slice(-1)==='/')t+='index.html';location.replace(t+location.search+location.hash)</script><meta http-equiv="refresh" content="0; url=${target}"></head><body><p><a href="${target}">This page has moved.</a></p></body></html>\n`;
 for (const lang of ['en', 'ar']) {
   for (const [old, key] of Object.entries(legacy)) {
-    written.push(write((lang === 'ar' ? 'ar/' : '') + old, redirect(absolute(lang, key) || pages[key], lang)));
+    written.push(write((lang === 'ar' ? 'ar/' : '') + old, redirect(pages[key], lang, absolute(lang, key))));
   }
 }
 

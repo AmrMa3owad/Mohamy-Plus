@@ -378,3 +378,6 @@ qa-screenshots/
 # Local tooling
 node_modules/
 __pycache__/
+
+# Internal CRM (Google Apps Script) — private, never publish with the website
+/Internal System/

@@ -6,7 +6,7 @@ export const site = {
   // Production origin WITHOUT a trailing slash, e.g. "https://mohamyplus.com".
   // When set, the build adds canonical URLs, hreflang alternates, absolute
   // Open Graph URLs and a sitemap.xml. Leave empty until the domain is final.
-  url: '',
+  url: 'https://amrma3owad.github.io/Mohamy-Plus',
 
   name: { en: 'Mohamy Plus', ar: 'محامي بلس' },
   phone: '+201080509733',
@@ -26,7 +26,7 @@ export const site = {
   // Paste the private link from the CRM (Settings -> Website leads), then rebuild.
   // Leave empty to only open WhatsApp, as before.
   crm: {
-    intakeUrl: '',
+    intakeUrl: 'https://script.google.com/macros/s/AKfycby0Y5CqvZEQBPyi2vHvhmWiPF-SN3D4aHJ9WUxWRXHOOPbDswyn6UR1HWd8Rj94aI0eKw/exec?key=f173160c81084ef0acbc0bc002e7d7c89019c1291dc04287a0369535c1aaf416',
   },
   // Optional sections paused at the client's request (see src/sections/paused.mjs).
   // Turn on only once real, client-approved content has been added.
